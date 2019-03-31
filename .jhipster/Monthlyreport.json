@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "from_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "to_date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20181220122210",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "monthlyreport",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

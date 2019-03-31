@@ -1,0 +1,731 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-stk-heading">
+                            <span *ngIf="stk.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> STK
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_number">Incident ref</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_number" id="field_stk_number"
+                                [(ngModel)]="stk.stk_number" required [disabled]="stk.id" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_domain">Domain</label>
+                            <select class="form-control form-control-custom" id="field_domain" name="domain"
+                                [(ngModel)]="stk.domain" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="domainOption.id === stk.domain?.id ? stk.domain : domainOption"
+                                    *ngFor="let domainOption of domains; trackBy: trackDomainById">{{domainOption.domain_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_description">Description</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_description" id="field_stk_description"
+                                [(ngModel)]="stk.stk_description" required [disabled]="stk.id" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">System</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="stk.group"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === stk.group?.id ? stk.group : groupOption" *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_priority">Priority</label>
+                            <select class="form-control form-control-custom" id="field_priority" name="priority"
+                                [(ngModel)]="stk.priority" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="priorityOption.id === stk.priority?.id ? stk.priority : priorityOption"
+                                    *ngFor="let priorityOption of priorities; trackBy: trackPriorityById">{{priorityOption.priority_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_state">State</label>
+                            <select class="form-control form-control-custom" id="field_state" name="state" [(ngModel)]="stk.state"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="stateOption.id === stk.state?.id ? stk.state : stateOption" *ngFor="let stateOption of states; trackBy: trackStateById">{{stateOption.state_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_start_date">Actual Incident
+                                Start Date</label>
+                            <div class="d-flex">
+                                <input id="field_stk_start_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="stk_start_date" [(ngModel)]="stk_start_date" required [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_nttdata_start_date">NTT Data
+                                Start Date</label>
+                            <div class="d-flex">
+                                <input id="field_nttdata_start_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="nttdata_start_date" [(ngModel)]="nttdata_start_date" required [disabled]="stk.id"
+                                    [min]="DF" [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_comment">Comment</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_comment" id="field_stk_comment"
+                                [(ngModel)]="stk.stk_comment" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date">Passed Back
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date" [(ngModel)]="passed_back_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date">Re Assigned
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date" [(ngModel)]="re_assigned_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date1">Passed Back
+                                Date 1</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date1" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date1" [(ngModel)]="passed_back_date1" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date1">Re Assigned
+                                Date 1</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date1" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date1" [(ngModel)]="re_assigned_date1" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date2">Passed Back
+                                Date 2</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date2" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date2" [(ngModel)]="passed_back_date2" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date2">Re Assigned
+                                Date 2</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date2" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date2" [(ngModel)]="re_assigned_date2" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date3">Passed Back
+                                Date 3</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date3" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date3" [(ngModel)]="passed_back_date3" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date3">Re Assigned
+                                Date 3</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date3" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date3" [(ngModel)]="re_assigned_date3" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date4">Passed Back
+                                Date 4</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date4" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date4" [(ngModel)]="passed_back_date4" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date4">Re Assigned
+                                Date 4</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date4" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date4" [(ngModel)]="re_assigned_date4" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date5">Passed Back
+                                Date 5</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date5" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date5" [(ngModel)]="passed_back_date5" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date5">Re Assigned
+                                Date 5</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date5" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date5" [(ngModel)]="re_assigned_date5" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_completed">Rca Completed</label>
+                            <input type="checkbox" class="form-control form-control-custom" name="rca_completed" id="field_rca_completed"
+                                [(ngModel)]="stk.rca_completed" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_completed_date">Rca Completed
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_rca_completed_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rca_completed_date" [(ngModel)]="rca_completed_date" [disabled]="!stk.rca_completed" [required]="stk.rca_completed"
+                                    [min]="DF" [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_root_cause_description">Root
+                                Cause Description</label>
+                            <input type="text" class="form-control form-control-custom" name="root_cause_description"
+                                id="field_root_cause_description" [(ngModel)]="stk.root_cause_description" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_solution_found">Solution
+                                Identified</label>
+                            <input type="checkbox" class="form-control form-control-custom" name="solution_found" id="field_solution_found"
+                                [(ngModel)]="stk.solution_found" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_solution_found_date">Solution
+                                Identified Date</label>
+                            <div class="d-flex">
+                                <input id="field_solution_found_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="solution_found_date" [(ngModel)]="solution_found_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)"  [required]="stk.solution_found" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_ter_date">TER Date</label>
+                            <div class="d-flex">
+                                <input id="field_ter_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="ter_date" [(ngModel)]="ter_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rrt_start_date">RRT Start Date</label>
+                            <div class="d-flex">
+                                <input id="field_rrt_start_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rrt_start_date" [(ngModel)]="rrt_start_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!stk.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rrt_completion_date">RRT
+                                Completion Date</label>
+                            <div class="d-flex">
+                                <input id="field_rrt_completion_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rrt_completion_date" [(ngModel)]="rrt_completion_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_live_date">Live Date</label>
+                            <div class="d-flex">
+                                <input id="field_live_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="live_date" [(ngModel)]="live_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_issuetype">Type of Issue</label>
+                            <select class="form-control form-control-custom" id="field_issuetype" name="issuetype"
+                                [(ngModel)]="stk.issuetype">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="issuetypeOption.id === stk.issuetype?.id ? stk.issuetype : issuetypeOption"
+                                    *ngFor="let issuetypeOption of issuetypes; trackBy: trackIssuetypeById">{{issuetypeOption.issue_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_fix_success">Is RC fixed
+                                successfully?</label>
+                            <input type="text" class="form-control form-control-custom" name="rca_fix_success" id="field_rca_fix_success"
+                                [(ngModel)]="stk.rca_fix_success" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="stk.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--<hr>
+            <h2 id="jhi-stk-heading">Create or edit a Stk</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!stk.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="stk.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stk_number">Stk Number</label>
+                    <input type="text" class="form-control" name="stk_number" id="field_stk_number" [(ngModel)]="stk.stk_number" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stk_description">Stk Description</label>
+                    <input type="text" class="form-control" name="stk_description" id="field_stk_description"
+                        [(ngModel)]="stk.stk_description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stk_comment">Stk Comment</label>
+                    <input type="text" class="form-control" name="stk_comment" id="field_stk_comment" [(ngModel)]="stk.stk_comment" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_root_cause_description">Root Cause Description</label>
+                    <input type="text" class="form-control" name="root_cause_description" id="field_root_cause_description"
+                        [(ngModel)]="stk.root_cause_description" />
+                </div>
+                <div class="form-group" [hidden]="!stk.id">
+                    <label class="form-control-label" for="field_rca_fix_success">Rca Fix Success</label>
+                    <input type="text" class="form-control" name="rca_fix_success" id="field_rca_fix_success"
+                        [(ngModel)]="stk.rca_fix_success" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stk_start_date">Stk Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_stk_start_date" type="datetime-local" class="form-control" name="stk_start_date"
+                            [(ngModel)]="stk_start_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requested_date">Requested Date</label>
+                    <div class="d-flex">
+                        <input id="field_requested_date" type="datetime-local" class="form-control" name="requested_date"
+                            [(ngModel)]="requested_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responded_time">Responded Time</label>
+                    <div class="d-flex">
+                        <input id="field_responded_time" type="datetime-local" class="form-control" name="responded_time"
+                            [(ngModel)]="responded_time" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control" name="modified_time"
+                            [(ngModel)]="modified_time" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nttdata_start_date">Nttdata Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_nttdata_start_date" type="datetime-local" class="form-control" name="nttdata_start_date"
+                            [(ngModel)]="nttdata_start_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rca_completed_date">Rca Completed Date</label>
+                    <div class="d-flex">
+                        <input id="field_rca_completed_date" type="datetime-local" class="form-control" name="rca_completed_date"
+                            [(ngModel)]="rca_completed_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_solution_found_date">Solution Found Date</label>
+                    <div class="d-flex">
+                        <input id="field_solution_found_date" type="datetime-local" class="form-control" name="solution_found_date"
+                            [(ngModel)]="solution_found_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date">Passed Back Date</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date" type="datetime-local" class="form-control" name="passed_back_date"
+                            [(ngModel)]="passed_back_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date">Re Assigned Date</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date" type="datetime-local" class="form-control" name="re_assigned_date"
+                            [(ngModel)]="re_assigned_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date1">Passed Back Date 1</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date1" type="datetime-local" class="form-control" name="passed_back_date1"
+                            [(ngModel)]="passed_back_date1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date1">Re Assigned Date 1</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date1" type="datetime-local" class="form-control" name="re_assigned_date1"
+                            [(ngModel)]="re_assigned_date1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date2">Passed Back Date 2</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date2" type="datetime-local" class="form-control" name="passed_back_date2"
+                            [(ngModel)]="passed_back_date2" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date2">Re Assigned Date 2</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date2" type="datetime-local" class="form-control" name="re_assigned_date2"
+                            [(ngModel)]="re_assigned_date2" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date3">Passed Back Date 3</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date3" type="datetime-local" class="form-control" name="passed_back_date3"
+                            [(ngModel)]="passed_back_date3" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date3">Re Assigned Date 3</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date3" type="datetime-local" class="form-control" name="re_assigned_date3"
+                            [(ngModel)]="re_assigned_date3" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date4">Passed Back Date 4</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date4" type="datetime-local" class="form-control" name="passed_back_date4"
+                            [(ngModel)]="passed_back_date4" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date4">Re Assigned Date 4</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date4" type="datetime-local" class="form-control" name="re_assigned_date4"
+                            [(ngModel)]="re_assigned_date4" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passed_back_date5">Passed Back Date 5</label>
+                    <div class="d-flex">
+                        <input id="field_passed_back_date5" type="datetime-local" class="form-control" name="passed_back_date5"
+                            [(ngModel)]="passed_back_date5" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_re_assigned_date5">Re Assigned Date 5</label>
+                    <div class="d-flex">
+                        <input id="field_re_assigned_date5" type="datetime-local" class="form-control" name="re_assigned_date5"
+                            [(ngModel)]="re_assigned_date5" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_closed_date">Closed Date</label>
+                    <div class="d-flex">
+                        <input id="field_closed_date" type="datetime-local" class="form-control" name="closed_date"
+                            [(ngModel)]="closed_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ter_date">Ter Date</label>
+                    <div class="d-flex">
+                        <input id="field_ter_date" type="datetime-local" class="form-control" name="ter_date"
+                            [(ngModel)]="ter_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rrt_start_date">Rrt Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_rrt_start_date" type="datetime-local" class="form-control" name="rrt_start_date"
+                            [(ngModel)]="rrt_start_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rrt_completion_date">Rrt Completion Date</label>
+                    <div class="d-flex">
+                        <input id="field_rrt_completion_date" type="datetime-local" class="form-control" name="rrt_completion_date"
+                            [(ngModel)]="rrt_completion_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_live_date">Live Date</label>
+                    <div class="d-flex">
+                        <input id="field_live_date" type="datetime-local" class="form-control" name="live_date"
+                            [(ngModel)]="live_date" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1">Km 1</label>
+                    <input type="text" class="form-control" name="km1" id="field_km1" [(ngModel)]="stk.km1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1_breached">Km 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="km1_breached" id="field_km1_breached" [(ngModel)]="stk.km1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km2">Km 2</label>
+                    <input type="text" class="form-control" name="km2" id="field_km2" [(ngModel)]="stk.km2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km2_breached">Km 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="km2_breached" id="field_km2_breached" [(ngModel)]="stk.km2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km3">Km 3</label>
+                    <input type="text" class="form-control" name="km3" id="field_km3" [(ngModel)]="stk.km3" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km3_breached">Km 3 Breached</label>
+                    <input type="checkbox" class="form-control" name="km3_breached" id="field_km3_breached" [(ngModel)]="stk.km3_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1">Qm 1</label>
+                    <input type="text" class="form-control" name="qm1" id="field_qm1" [(ngModel)]="stk.qm1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1_breached">Qm 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm1_breached" id="field_qm1_breached" [(ngModel)]="stk.qm1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2">Qm 2</label>
+                    <input type="text" class="form-control" name="qm2" id="field_qm2" [(ngModel)]="stk.qm2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2_breached">Qm 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm2_breached" id="field_qm2_breached" [(ngModel)]="stk.qm2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm3">Qm 3</label>
+                    <input type="text" class="form-control" name="qm3" id="field_qm3" [(ngModel)]="stk.qm3" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm3_breached">Qm 3 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm3_breached" id="field_qm3_breached" [(ngModel)]="stk.qm3_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm4">Qm 4</label>
+                    <input type="text" class="form-control" name="qm4" id="field_qm4" [(ngModel)]="stk.qm4" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm4_breached">Qm 4 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm4_breached" id="field_qm4_breached" [(ngModel)]="stk.qm4_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rca_completed">Rca Completed</label>
+                    <input type="checkbox" class="form-control" name="rca_completed" id="field_rca_completed"
+                        [(ngModel)]="stk.rca_completed" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_solution_found">Solution Found</label>
+                    <input type="checkbox" class="form-control" name="solution_found" id="field_solution_found"
+                        [(ngModel)]="stk.solution_found" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_finaldate_rca">Finaldate Rca</label>
+                    <div class="d-flex">
+                        <input id="field_finaldate_rca" type="datetime-local" class="form-control" name="finaldate_rca"
+                            [(ngModel)]="finaldate_rca" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_finaldate_solution">Finaldate Solution</label>
+                    <div class="d-flex">
+                        <input id="field_finaldate_solution" type="datetime-local" class="form-control" name="finaldate_solution"
+                            [(ngModel)]="finaldate_solution" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ticket">Ticket</label>
+                    <select class="form-control" id="field_ticket" name="ticket" [(ngModel)]="stk.ticket">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ticketOption.id === stk.ticket?.id ? stk.ticket : ticketOption" *ngFor="let ticketOption of tickets; trackBy: trackTicketById">{{ticketOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State</label>
+                    <select class="form-control" id="field_state" name="state" [(ngModel)]="stk.state">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stateOption.id === stk.state?.id ? stk.state : stateOption" *ngFor="let stateOption of states; trackBy: trackStateById">{{stateOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_domain">Domain</label>
+                    <select class="form-control" id="field_domain" name="domain" [(ngModel)]="stk.domain">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="domainOption.id === stk.domain?.id ? stk.domain : domainOption" *ngFor="let domainOption of domains; trackBy: trackDomainById">{{domainOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_category">Category</label>
+                    <select class="form-control" id="field_category" name="category" [(ngModel)]="stk.category">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categoryOption.id === stk.category?.id ? stk.category : categoryOption"
+                            *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_priority">Priority</label>
+                    <select class="form-control" id="field_priority" name="priority" [(ngModel)]="stk.priority">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="priorityOption.id === stk.priority?.id ? stk.priority : priorityOption"
+                            *ngFor="let priorityOption of priorities; trackBy: trackPriorityById">{{priorityOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_group">Group</label>
+                    <select class="form-control" id="field_group" name="group" [(ngModel)]="stk.group">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="groupOption.id === stk.group?.id ? stk.group : groupOption" *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_issuetype">Issuetype</label>
+                    <select class="form-control" id="field_issuetype" name="issuetype" [(ngModel)]="stk.issuetype">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="issuetypeOption.id === stk.issuetype?.id ? stk.issuetype : issuetypeOption"
+                            *ngFor="let issuetypeOption of issuetypes; trackBy: trackIssuetypeById">{{issuetypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_incidenttype">Incidenttype</label>
+                    <select class="form-control" id="field_incidenttype" name="incidenttype" [(ngModel)]="stk.incidenttype">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="incidenttypeOption.id === stk.incidenttype?.id ? stk.incidenttype : incidenttypeOption"
+                            *ngFor="let incidenttypeOption of incidenttypes; trackBy: trackIncidenttypeById">{{incidenttypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_impact">Impact</label>
+                    <select class="form-control" id="field_impact" name="impact" [(ngModel)]="stk.impact">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="impactOption.id === stk.impact?.id ? stk.impact : impactOption" *ngFor="let impactOption of impacts; trackBy: trackImpactById">{{impactOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>-->
+        </form>
+    </div>
+</div>

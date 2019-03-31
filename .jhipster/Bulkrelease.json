@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "filename",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20181127103047",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "bulkrelease",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

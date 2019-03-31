@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-reports-heading">Create or edit a Reports</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!reports.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="reports.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_report">Report</label>
+                    <div>
+                        <div *ngIf="reports.report" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(reports.reportContentType, reports.report)">open</a><br>
+                            <span class="pull-left">{{reports.reportContentType}}, {{byteSize(reports.report)}}</span>
+                            <button type="button" (click)="reports.report=null;reports.reportContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_report" (change)="setFileData($event, reports, 'report', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="report" id="field_report"
+                        [(ngModel)]="reports.report" />
+                    <input type="hidden" class="form-control" name="reportContentType" id="field_reportContentType"
+                        [(ngModel)]="reports.reportContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_generated_on">Generated On</label>
+                    <div class="d-flex">
+                        <input id="field_generated_on" type="datetime-local" class="form-control" name="generated_on" [(ngModel)]="generated_on"
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

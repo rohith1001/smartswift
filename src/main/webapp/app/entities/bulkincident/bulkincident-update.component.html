@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-bulkincident-heading">
+                            <span *ngIf="bulkincident.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Choose the file for uploading into</ng-template> PC Incident
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_filename">Filename</label>
+                            <div>
+                                <div *ngIf="bulkincident.filename" class="form-text text-danger clearfix">
+                                    <a class="pull-left" (click)="openFile(bulkincident.filenameContentType, bulkincident.filename)">open</a><br>
+                                    <span class="pull-left">{{bulkincident.filenameContentType}},
+                                        {{byteSize(bulkincident.filename)}}</span>
+                                    <button type="button" (click)="bulkincident.filename=null;bulkincident.filenameContentType=null;"
+                                        class="btn btn-secondary btn-xs pull-right">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                    </button>
+                                </div>
+                                <input type="file" id="file_filename" (change)="setFileData($event, bulkincident, 'filename', false)" />
+                            </div>
+                            <input type="hidden" class="form-control form-control-custom" name="filename" id="field_filename"
+                                [(ngModel)]="bulkincident.filename" required/>
+                            <input type="hidden" class="form-control form-control-custom" name="filenameContentType" id="field_filenameContentType"
+                                [(ngModel)]="bulkincident.filenameContentType" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="bulkincident.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--<div>
+                <div class="form-group" [hidden]="!bulkincident.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="bulkincident.id" readonly />
+                </div>
+            </div>-->
+        </form>
+    </div>
+</div>

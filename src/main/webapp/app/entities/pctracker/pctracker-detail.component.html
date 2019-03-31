@@ -1,0 +1,348 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="pctracker">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>PC Tracker</span> {{pctracker.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Elf Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.elf_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Title</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.title}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>System</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.system}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Date Received</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.date_received | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Iia Deliver Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.iia_deliver_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Iia Deliver Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.iia_deliver_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Dcd Deliver Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.dcd_deliver_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Dcd Deliver Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.dcd_deliver_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Wr Acknowledge Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.wr_acknowledge_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Wr Acknowledge Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.wr_acknowledge_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Wr Costready Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.wr_costready_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Wr Costready Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.wr_costready_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hlcd Delivery Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.hlcd_delivery_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hlcd Delivery Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.hlcd_delivery_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Test Ready Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.test_ready_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Test Ready Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.test_ready_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Launch Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.launch_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Launch Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.launch_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.delivery_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.delivery_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Comments</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.comments}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>User Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.user_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Major</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.major}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Minor</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.minor}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Cosmetic</span></dt>
+                        <dd class="ddc">
+                            <span>{{pctracker.cosmetic}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Configtype</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="pctracker.configtype">
+                                <a [routerLink]="['/configtype', pctracker.configtype?.id, 'view']">{{pctracker.configtype?.type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Elf Status</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="pctracker.elf_status">
+                                <a [routerLink]="['/elf-status', pctracker.elf_status?.id, 'view']">{{pctracker.elf_status?.status}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi3}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 3 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.kpi3_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km2_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km3}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 3 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km3_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km4}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 4 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.km4_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{pctracker.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+
+                        <button type="button" [routerLink]="['/pctracker', pctracker.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

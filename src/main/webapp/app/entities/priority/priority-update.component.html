@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-priority-heading">Create or edit a Priority</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!priority.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="priority.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_priority_name">Priority Name</label>
+                    <input type="text" class="form-control" name="priority_name" id="field_priority_name"
+                        [(ngModel)]="priority.priority_name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_update_frequency">Update Frequency</label>
+                    <input type="text" class="form-control" name="update_frequency" id="field_update_frequency"
+                        [(ngModel)]="priority.update_frequency" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ack_time">Ack Time</label>
+                    <div class="input-group">
+                        <input id="field_ack_time" type="text" class="form-control" name="ack_time" ngbDatepicker  #ack_timeDp="ngbDatepicker" [(ngModel)]="priority.ack_time"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="ack_timeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_restore_time">Restore Time</label>
+                    <div class="input-group">
+                        <input id="field_restore_time" type="text" class="form-control" name="restore_time" ngbDatepicker  #restore_timeDp="ngbDatepicker" [(ngModel)]="priority.restore_time"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="restore_timeDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_operation_hours">Operation Hours</label>
+                    <input type="text" class="form-control" name="operation_hours" id="field_operation_hours"
+                        [(ngModel)]="priority.operation_hours" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_operational_days">Operational Days</label>
+                    <input type="number" class="form-control" name="operational_days" id="field_operational_days"
+                        [(ngModel)]="priority.operational_days" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ticket">Ticket</label>
+                    <select class="form-control" id="field_ticket" name="ticket" [(ngModel)]="priority.ticket" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ticketOption.id === priority.ticket?.id ? priority.ticket : ticketOption" *ngFor="let ticketOption of tickets; trackBy: trackTicketById">{{ticketOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

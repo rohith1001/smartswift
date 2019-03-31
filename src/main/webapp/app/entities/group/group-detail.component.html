@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="group">
+            <h2><span>Group</span> {{group.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Group Name</span></dt>
+                <dd>
+                    <span>{{group.group_name}}</span>
+                </dd>
+                <dt><span>Domain</span></dt>
+                <dd>
+                    <div *ngIf="group.domain">
+                        <a [routerLink]="['/domain', group.domain?.id, 'view']">{{group.domain?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Ticket</span></dt>
+                <dd>
+                    <div *ngIf="group.ticket">
+                        <a [routerLink]="['/ticket', group.ticket?.id, 'view']">{{group.ticket?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/group', group.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

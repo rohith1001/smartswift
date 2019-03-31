@@ -1,0 +1,300 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available STKs</span>
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-stk"
+                        [routerLink]="['/stk/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create STK
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="stks">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>STK Number</span></td>
+                            <td><span>Description</span></td>
+                            <td><span>State</span></td>
+                            <td><span>Domain</span></td>
+                            <td><span>Priority</span></td>
+                            <td><span>Group</span></td>
+                            <td><span>STK Start Date</span></td>
+                            <td><span>NTT Data Start Date</span></td>
+                            <td><span>Closed Date</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let stk of stks ;trackBy: trackId">
+                            <td><a [routerLink]="['/stk', stk.id, 'view' ]">{{stk.id}}</a></td>
+                            <td>{{stk.stk_number}}</td>
+                            <td>{{stk.stk_description}}</td>
+                            <td>
+                                <div *ngIf="stk.state">
+                                    <a [routerLink]="['../state', stk.state?.id, 'view' ]">{{stk.state?.state_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="stk.domain">
+                                    <a [routerLink]="['../domain', stk.domain?.id, 'view' ]">{{stk.domain?.domain_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="stk.priority">
+                                    <a [routerLink]="['../priority', stk.priority?.id, 'view' ]">{{stk.priority?.priority_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="stk.group">
+                                    <a [routerLink]="['../group', stk.group?.id, 'view' ]">{{stk.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{stk.stk_start_date | date:'medium'}}</td>
+                            <td>{{stk.nttdata_start_date | date:'medium'}}</td>
+                            <td>{{stk.closed_date | date:'medium'}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/stk', stk.id, 'view' ]" class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/stk', stk.id, 'edit']" class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'stk/'+ stk.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive" *ngIf="!stks">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>No Data Found !!!</span></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div>
+    <h2 id="page-heading">
+        <span>Stks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-stk" [routerLink]="['/stk/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Stk
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="stks">
+        <table class="table table-striped">
+            <tdead>
+            <tr>
+            <td><span>ID</span></td>
+            <td><span>Stk Number</span></td>
+            <td><span>Stk Description</span></td>
+            <td><span>Stk Comment</span></td>
+            <td><span>Root Cause Description</span></td>
+            <td><span>Rca Fix Success</span></td>
+            <td><span>Stk Start Date</span></td>
+            <td><span>Requested Date</span></td>
+            <td><span>Responded Time</span></td>
+            <td><span>Modified Time</span></td>
+            <td><span>Nttdata Start Date</span></td>
+            <td><span>Rca Completed Date</span></td>
+            <td><span>Solution Found Date</span></td>
+            <td><span>Passed Back Date</span></td>
+            <td><span>Re Assigned Date</span></td>
+            <td><span>Passed Back Date 1</span></td>
+            <td><span>Re Assigned Date 1</span></td>
+            <td><span>Passed Back Date 2</span></td>
+            <td><span>Re Assigned Date 2</span></td>
+            <td><span>Passed Back Date 3</span></td>
+            <td><span>Re Assigned Date 3</span></td>
+            <td><span>Passed Back Date 4</span></td>
+            <td><span>Re Assigned Date 4</span></td>
+            <td><span>Passed Back Date 5</span></td>
+            <td><span>Re Assigned Date 5</span></td>
+            <td><span>Closed Date</span></td>
+            <td><span>Ter Date</span></td>
+            <td><span>Rrt Start Date</span></td>
+            <td><span>Rrt Completion Date</span></td>
+            <td><span>Live Date</span></td>
+            <td><span>Km 1</span></td>
+            <td><span>Km 1 Breached</span></td>
+            <td><span>Km 2</span></td>
+            <td><span>Km 2 Breached</span></td>
+            <td><span>Km 3</span></td>
+            <td><span>Km 3 Breached</span></td>
+            <td><span>Qm 1</span></td>
+            <td><span>Qm 1 Breached</span></td>
+            <td><span>Qm 2</span></td>
+            <td><span>Qm 2 Breached</span></td>
+            <td><span>Qm 3</span></td>
+            <td><span>Qm 3 Breached</span></td>
+            <td><span>Qm 4</span></td>
+            <td><span>Qm 4 Breached</span></td>
+            <td><span>Rca Completed</span></td>
+            <td><span>Solution Found</span></td>
+            <td><span>Finaldate Rca</span></td>
+            <td><span>Finaldate Solution</span></td>
+            <td><span>Ticket</span></td>
+            <td><span>State</span></td>
+            <td><span>Domain</span></td>
+            <td><span>Category</span></td>
+            <td><span>Priority</span></td>
+            <td><span>Group</span></td>
+            <td><span>Issuetype</span></td>
+            <td><span>Incidenttype</span></td>
+            <td><span>Impact</span></td>
+            <td></td>
+            </tr>
+            </tdead>
+            <tbody>
+            <tr *ngFor="let stk of stks ;trackBy: trackId">
+                <td><a [routerLink]="['/stk', stk.id, 'view' ]">{{stk.id}}</a></td>
+                <td>{{stk.stk_number}}</td>
+                <td>{{stk.stk_description}}</td>
+                <td>{{stk.stk_comment}}</td>
+                <td>{{stk.root_cause_description}}</td>
+                <td>{{stk.rca_fix_success}}</td>
+                <td>{{stk.stk_start_date | date:'medium'}}</td>
+                <td>{{stk.requested_date | date:'medium'}}</td>
+                <td>{{stk.responded_time | date:'medium'}}</td>
+                <td>{{stk.modified_time | date:'medium'}}</td>
+                <td>{{stk.nttdata_start_date | date:'medium'}}</td>
+                <td>{{stk.rca_completed_date | date:'medium'}}</td>
+                <td>{{stk.solution_found_date | date:'medium'}}</td>
+                <td>{{stk.passed_back_date | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date | date:'medium'}}</td>
+                <td>{{stk.passed_back_date1 | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date1 | date:'medium'}}</td>
+                <td>{{stk.passed_back_date2 | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date2 | date:'medium'}}</td>
+                <td>{{stk.passed_back_date3 | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date3 | date:'medium'}}</td>
+                <td>{{stk.passed_back_date4 | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date4 | date:'medium'}}</td>
+                <td>{{stk.passed_back_date5 | date:'medium'}}</td>
+                <td>{{stk.re_assigned_date5 | date:'medium'}}</td>
+                <td>{{stk.closed_date | date:'medium'}}</td>
+                <td>{{stk.ter_date | date:'medium'}}</td>
+                <td>{{stk.rrt_start_date | date:'medium'}}</td>
+                <td>{{stk.rrt_completion_date | date:'medium'}}</td>
+                <td>{{stk.live_date | date:'medium'}}</td>
+                <td>{{stk.km1}}</td>
+                <td>{{stk.km1_breached}}</td>
+                <td>{{stk.km2}}</td>
+                <td>{{stk.km2_breached}}</td>
+                <td>{{stk.km3}}</td>
+                <td>{{stk.km3_breached}}</td>
+                <td>{{stk.qm1}}</td>
+                <td>{{stk.qm1_breached}}</td>
+                <td>{{stk.qm2}}</td>
+                <td>{{stk.qm2_breached}}</td>
+                <td>{{stk.qm3}}</td>
+                <td>{{stk.qm3_breached}}</td>
+                <td>{{stk.qm4}}</td>
+                <td>{{stk.qm4_breached}}</td>
+                <td>{{stk.rca_completed}}</td>
+                <td>{{stk.solution_found}}</td>
+                <td>{{stk.finaldate_rca | date:'medium'}}</td>
+                <td>{{stk.finaldate_solution | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="stk.ticket">
+                        <a [routerLink]="['../ticket', stk.ticket?.id, 'view' ]" >{{stk.ticket?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.state">
+                        <a [routerLink]="['../state', stk.state?.id, 'view' ]" >{{stk.state?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.domain">
+                        <a [routerLink]="['../domain', stk.domain?.id, 'view' ]" >{{stk.domain?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.category">
+                        <a [routerLink]="['../category', stk.category?.id, 'view' ]" >{{stk.category?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.priority">
+                        <a [routerLink]="['../priority', stk.priority?.id, 'view' ]" >{{stk.priority?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.group">
+                        <a [routerLink]="['../group', stk.group?.id, 'view' ]" >{{stk.group?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.issuetype">
+                        <a [routerLink]="['../issuetype', stk.issuetype?.id, 'view' ]" >{{stk.issuetype?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.incidenttype">
+                        <a [routerLink]="['../incidenttype', stk.incidenttype?.id, 'view' ]" >{{stk.incidenttype?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="stk.impact">
+                        <a [routerLink]="['../impact', stk.impact?.id, 'view' ]" >{{stk.impact?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/stk', stk.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/stk', stk.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'stk/'+ stk.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->

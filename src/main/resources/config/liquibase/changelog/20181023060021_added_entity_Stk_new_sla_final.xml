@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Stk.
+    -->
+    <changeSet id="20181023060021-1" author="jhipster">
+        <createTable tableName="stk">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="stk_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stk_description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stk_comment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="root_cause_description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rca_fix_success" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stk_start_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="requested_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="responded_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modified_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="nttdata_start_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rca_completed_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="solution_found_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date_1" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date_1" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date_2" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date_2" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date_3" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date_3" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date_4" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date_4" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="passed_back_date_5" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="re_assigned_date_5" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="closed_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ter_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rrt_start_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rrt_completion_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="live_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_1_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_2_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="km_3_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_1_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_2_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_3_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_4_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rca_completed" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="solution_found" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="finaldate_rca" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="finaldate_solution" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ticket_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="state_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="domain_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="category_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="priority_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="issuetype_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="incidenttype_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="impact_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="stk" columnName="stk_start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="requested_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="responded_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="modified_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="nttdata_start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="rca_completed_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="solution_found_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date_1" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date_1" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date_2" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date_2" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date_3" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date_3" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date_4" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date_4" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="passed_back_date_5" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="re_assigned_date_5" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="closed_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="ter_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="rrt_start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="rrt_completion_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="live_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="finaldate_rca" columnDataType="datetime"/>
+        <dropDefaultValue tableName="stk" columnName="finaldate_solution" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

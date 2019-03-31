@@ -1,0 +1,225 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available Test Trackers</span>        
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-test-tracker"
+                        [routerLink]="['/test-tracker/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create Test Tracker
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="test_trackers">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>ELF Id</span></td>
+                            <td><span>Defect Number</span></td>
+                            <td><span>Defect Severity</span></td>
+                            <td><span>Severity</span></td>
+                            <td><span>System</span></td>
+                            <td><span>Domain Name</span></td>
+                            <td><span>Project Name</span></td>
+                            <td><span>Test Phase</span></td>
+                            <td><span>Detected On Date</span></td>
+                            <td><span>First Fix Date</span></td>
+                            <td><span>Last Fix Date</span></td>
+                            <td><span>Fix Due Date</span></td>
+                            <td><span>Status</span></td>
+                            <td><span>Closing Date</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let test_tracker of test_trackers ;trackBy: trackId">
+                            <td><a [routerLink]="['/test-tracker', test_tracker.id, 'view' ]">{{test_tracker.id}}</a></td>
+                            <td>{{test_tracker.elf_id}}</td>
+                            <td>{{test_tracker.defect_number}}</td>
+                            <td>{{test_tracker.defect_severity}}</td>
+                            <td>
+                                <div *ngIf="test_tracker.severity">
+                                    <a [routerLink]="['../severity', test_tracker.severity?.id, 'view' ]">{{test_tracker.severity?.severity_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="test_tracker.group">
+                                    <a [routerLink]="['../group', test_tracker.group?.id, 'view' ]">{{test_tracker.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{test_tracker.domain_name}}</td>
+                            <td>{{test_tracker.project_name}}</td>
+                            <td>{{test_tracker.test_phase}}</td>
+                            <td>{{test_tracker.detected_on_date | date:'mediumDate'}}</td>
+                            <td>{{test_tracker.first_fix_date | date:'medium'}}</td>
+                            <td>{{test_tracker.last_fix_date | date:'medium'}}</td>
+                            <td>{{test_tracker.fix_due_date | date:'medium'}}</td>
+                            <td>{{test_tracker.status}}</td>
+                            <td>{{test_tracker.closing_date | date:'medium'}}</td>
+
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/test-tracker', test_tracker.id, 'view' ]"
+                                        class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/test-tracker', test_tracker.id, 'edit']"
+                                        class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'test-tracker/'+ test_tracker.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <!--<br/>
+    <div class="table-responsive" *ngIf="test_trackers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Elf Id</span></th>
+            <th><span>Defect Number</span></th>
+            <th><span>Defect Severity</span></th>
+            <th><span>Domain Name</span></th>
+            <th><span>Project Name</span></th>
+            <th><span>Test Phase</span></th>
+            <th><span>Detected On Date</span></th>
+            <th><span>First Fix Date</span></th>
+            <th><span>Last Fix Date</span></th>
+            <th><span>Fix Due Date</span></th>
+            <th><span>Status</span></th>
+            <th><span>Resolution</span></th>
+            <th><span>Closing Date</span></th>
+            <th><span>Priority</span></th>
+            <th><span>Problem Category</span></th>
+            <th><span>Comments</span></th>
+            <th><span>Modified Time</span></th>
+            <th><span>User Id</span></th>
+            <th><span>Km 1</span></th>
+            <th><span>Km 1 Breached</span></th>
+            <th><span>Km 2</span></th>
+            <th><span>Km 2 Breached</span></th>
+            <th><span>Qm 1</span></th>
+            <th><span>Qm 1 Breached</span></th>
+            <th><span>Qm 2</span></th>
+            <th><span>Qm 2 Breached</span></th>
+            <th><span>Qm 3</span></th>
+            <th><span>Qm 3 Breached</span></th>
+            <th><span>Assingned In Qc</span></th>
+            <th><span>Code Fix</span></th>
+            <th><span>Concession Defect</span></th>
+            <th><span>Group</span></th>
+            <th><span>Severity</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let test_tracker of test_trackers ;trackBy: trackId">
+                <td><a [routerLink]="['/test-tracker', test_tracker.id, 'view' ]">{{test_tracker.id}}</a></td>
+                <td>{{test_tracker.elf_id}}</td>
+                <td>{{test_tracker.defect_number}}</td>
+                <td>{{test_tracker.defect_severity}}</td>
+                <td>{{test_tracker.domain_name}}</td>
+                <td>{{test_tracker.project_name}}</td>
+                <td>{{test_tracker.test_phase}}</td>
+                <td>{{test_tracker.detected_on_date | date:'mediumDate'}}</td>
+                <td>{{test_tracker.first_fix_date | date:'medium'}}</td>
+                <td>{{test_tracker.last_fix_date | date:'medium'}}</td>
+                <td>{{test_tracker.fix_due_date | date:'medium'}}</td>
+                <td>{{test_tracker.status}}</td>
+                <td>{{test_tracker.resolution}}</td>
+                <td>{{test_tracker.closing_date | date:'medium'}}</td>
+                <td>{{test_tracker.priority}}</td>
+                <td>{{test_tracker.problem_category}}</td>
+                <td>{{test_tracker.comments}}</td>
+                <td>{{test_tracker.modified_time | date:'medium'}}</td>
+                <td>{{test_tracker.user_id}}</td>
+                <td>{{test_tracker.km1}}</td>
+                <td>{{test_tracker.km1_breached}}</td>
+                <td>{{test_tracker.km2}}</td>
+                <td>{{test_tracker.km2_breached}}</td>
+                <td>{{test_tracker.qm1}}</td>
+                <td>{{test_tracker.qm1_breached}}</td>
+                <td>{{test_tracker.qm2}}</td>
+                <td>{{test_tracker.qm2_breached}}</td>
+                <td>{{test_tracker.qm3}}</td>
+                <td>{{test_tracker.qm3_breached}}</td>
+                <td>
+                    <div *ngIf="test_tracker.assingned_in_qc">
+                        <a [routerLink]="['../options', test_tracker.assingned_in_qc?.id, 'view' ]" >{{test_tracker.assingned_in_qc?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="test_tracker.code_fix">
+                        <a [routerLink]="['../options', test_tracker.code_fix?.id, 'view' ]" >{{test_tracker.code_fix?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="test_tracker.concession_defect">
+                        <a [routerLink]="['../options', test_tracker.concession_defect?.id, 'view' ]" >{{test_tracker.concession_defect?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="test_tracker.group">
+                        <a [routerLink]="['../group', test_tracker.group?.id, 'view' ]" >{{test_tracker.group?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="test_tracker.severity">
+                        <a [routerLink]="['../severity', test_tracker.severity?.id, 'view' ]" >{{test_tracker.severity?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/test-tracker', test_tracker.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/test-tracker', test_tracker.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'test-tracker/'+ test_tracker.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>-->
+</div>

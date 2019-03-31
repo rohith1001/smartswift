@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "ticket",
+            "otherEntityName": "ticket",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "priority_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "update_frequency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ack_time",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "restore_time",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "operation_hours",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "operational_days",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20181022095552",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "priority",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

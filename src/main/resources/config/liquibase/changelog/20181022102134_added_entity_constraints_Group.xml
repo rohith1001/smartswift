@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Group.
+    -->
+    <changeSet id="20181022102134-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="domain_id"
+                                 baseTableName="jhi_group"
+                                 constraintName="fk_group_domain_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="domain"/>
+
+        <addForeignKeyConstraint baseColumnNames="ticket_id"
+                                 baseTableName="jhi_group"
+                                 constraintName="fk_group_ticket_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ticket"/>
+
+    </changeSet>
+</databaseChangeLog>

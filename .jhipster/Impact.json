@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "impact_name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181023071347",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "impact",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

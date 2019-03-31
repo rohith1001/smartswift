@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="monthlyreport">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Monthlyreport</span> {{monthlyreport.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-6">
+                        <dt class="dtc"><span>From Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{monthlyreport.from_date}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt class="dtc"><span>To Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{monthlyreport.to_date}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/monthlyreport', monthlyreport.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

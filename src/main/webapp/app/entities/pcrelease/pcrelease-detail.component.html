@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pcrelease">
+            <h2><span>Pcrelease</span> {{pcrelease.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>System</span></dt>
+                <dd>
+                    <span>{{pcrelease.system}}</span>
+                </dd>
+                <dt><span>Release Date</span></dt>
+                <dd>
+                    <span>{{pcrelease.release_date}}</span>
+                </dd>
+                <dt><span>Testedbyamdocs</span></dt>
+                <dd>
+                    <span>{{pcrelease.testedbyamdocs}}</span>
+                </dd>
+                <dt><span>Total Effort</span></dt>
+                <dd>
+                    <span>{{pcrelease.total_effort}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pcrelease', pcrelease.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

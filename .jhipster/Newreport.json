@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "reportname",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20190121115700",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "newreport",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

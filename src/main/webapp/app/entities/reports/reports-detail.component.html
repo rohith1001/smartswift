@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reports">
+            <h2><span>Reports</span> {{reports.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Report</span></dt>
+                <dd>
+                    <div *ngIf="reports.report">
+                        <a (click)="openFile(reports.reportContentType, reports.report)">open</a>
+                        {{reports.reportContentType}}, {{byteSize(reports.report)}}
+                    </div>
+                </dd>
+                <dt><span>Generated On</span></dt>
+                <dd>
+                    <span>{{reports.generated_on}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reports', reports.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

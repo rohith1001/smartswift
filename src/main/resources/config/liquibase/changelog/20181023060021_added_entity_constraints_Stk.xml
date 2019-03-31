@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Stk.
+    -->
+    <changeSet id="20181023060021-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ticket_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_ticket_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ticket"/>
+
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="domain_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_domain_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="domain"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+
+        <addForeignKeyConstraint baseColumnNames="priority_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_priority_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="priority"/>
+
+        <addForeignKeyConstraint baseColumnNames="group_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="issuetype_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_issuetype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="issuetype"/>
+
+        <addForeignKeyConstraint baseColumnNames="incidenttype_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_incidenttype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="incidenttype"/>
+
+        <addForeignKeyConstraint baseColumnNames="impact_id"
+                                 baseTableName="stk"
+                                 constraintName="fk_stk_impact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="impact"/>
+
+    </changeSet>
+</databaseChangeLog>

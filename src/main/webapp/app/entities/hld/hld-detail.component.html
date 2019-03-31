@@ -1,0 +1,192 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="hld">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Hld</span> {{hld.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Elf Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.elf_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Project Name</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.project_name}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Request Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.request_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Actual Acknowledgement Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.actual_acknowledgement_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.delivery_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.delivery_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Agreed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.agreed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Flag</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.hold_flag}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.hold_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Days</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.hold_days}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Comments</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.comments}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>WIF Submission Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.wif_submission_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Finaldate</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.finaldate | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Requestor</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.requestor}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="hld.group">
+                                <a [routerLink]="['/group', hld.group?.id, 'view']">{{hld.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>User Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{hld.user_id}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.kpi1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.kpi1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{hld.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/hld', hld.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

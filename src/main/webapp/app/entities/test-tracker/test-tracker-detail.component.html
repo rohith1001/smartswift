@@ -1,0 +1,268 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="test_tracker">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Test Tracker</span> {{test_tracker.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Elf Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.elf_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Number</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.defect_number}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Severity</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.defect_severity}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Domain Name</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.domain_name}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Project Name</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.project_name}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Test Phase</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.test_phase}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Detected On Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.detected_on_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>First Fix Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.first_fix_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Last Fix Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.last_fix_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Fix Due Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.fix_due_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Status</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.status}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Resolution</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.resolution}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Closing Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.closing_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Priority</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.priority}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Problem Category</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.problem_category}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Comments</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.comments}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>User Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{test_tracker.user_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Assingned In Qc</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="test_tracker.assingned_in_qc">
+                                <a [routerLink]="['/options', test_tracker.assingned_in_qc?.id, 'view']">{{test_tracker.assingned_in_qc?.option_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Code Fix</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="test_tracker.code_fix">
+                                <a [routerLink]="['/options', test_tracker.code_fix?.id, 'view']">{{test_tracker.code_fix?.option_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Concession Defect</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="test_tracker.concession_defect">
+                                <a [routerLink]="['/options', test_tracker.concession_defect?.id, 'view']">{{test_tracker.concession_defect?.option_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="test_tracker.group">
+                                <a [routerLink]="['/group', test_tracker.group?.id, 'view']">{{test_tracker.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Severity</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="test_tracker.severity">
+                                <a [routerLink]="['/severity', test_tracker.severity?.id, 'view']">{{test_tracker.severity?.severity_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.km1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.km1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.km2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.km2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm3}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 3 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{test_tracker.qm3_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+
+                        <button type="button" [routerLink]="['/test-tracker', test_tracker.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

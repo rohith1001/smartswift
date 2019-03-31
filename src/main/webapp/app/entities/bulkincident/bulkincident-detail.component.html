@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="bulkincident">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Bulk Incident</span> {{bulkincident.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>File Name</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="bulkincident.filename">
+                                <a (click)="openFile(bulkincident.filenameContentType, bulkincident.filename)">open</a>
+                                {{bulkincident.filenameContentType}}, {{byteSize(bulkincident.filename)}}
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/bulkincident', bulkincident.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

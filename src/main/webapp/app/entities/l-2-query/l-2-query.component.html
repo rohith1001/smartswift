@@ -1,0 +1,199 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available L2 Queries</span>
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-l-2-query"
+                        [routerLink]="['/l-2-query/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create L2 Query
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="l2queries">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>STK Number</span></td>
+                            <td><span>Description</span></td>
+                            <td><span>State</span></td>
+                            <td><span>Domain</span></td>
+                            <td><span>Priority</span></td>
+                            <td><span>Group</span></td>
+                            <td><span>STK Start Date</span></td>
+                            <td><span>NTT Data Start Date</span></td>
+                            <td><span>Closed Date</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let l2query of l2queries ;trackBy: trackId">
+                            <td><a [routerLink]="['/l-2-query', l2query.id, 'view' ]">{{l2query.id}}</a></td>
+                            <td>{{l2query.stk_number}}</td>
+                            <td>{{l2query.stk_description}}</td>
+                            <td>
+                                <div *ngIf="l2query.state">
+                                    <a [routerLink]="['../state', l2query.state?.id, 'view' ]">{{l2query.state?.state_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="l2query.domain">
+                                    <a [routerLink]="['../domain', l2query.domain?.id, 'view' ]">{{l2query.domain?.domain_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="l2query.priority">
+                                    <a [routerLink]="['../priority', l2query.priority?.id, 'view' ]">{{l2query.priority?.priority_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="l2query.group">
+                                    <a [routerLink]="['../group', l2query.group?.id, 'view' ]">{{l2query.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{l2query.stk_start_date | date:'medium'}}</td>
+                            <td>{{l2query.nttdata_start_date | date:'medium'}}</td>
+                            <td>{{l2query.closed_date | date:'medium'}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/l-2-query', l2query.id, 'view' ]" class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/l-2-query', l2query.id, 'edit']" class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'l-2-query/'+ l2query.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div>
+    
+    <div class="table-responsive" *ngIf="l2queries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Stk Number</span></th>
+            <th><span>Stk Description</span></th>
+            <th><span>Stk Start Date</span></th>
+            <th><span>Requested Date</span></th>
+            <th><span>Responded Date</span></th>
+            <th><span>Stk Comment</span></th>
+            <th><span>Modified Time</span></th>
+            <th><span>Rca Completed</span></th>
+            <th><span>Rca Completed Date</span></th>
+            <th><span>Nttdata Start Date</span></th>
+            <th><span>Solution Found</span></th>
+            <th><span>Solution Found Date</span></th>
+            <th><span>Passed Back Date</span></th>
+            <th><span>Re Assigned Date</span></th>
+            <th><span>Passed Back Date 1</span></th>
+            <th><span>Re Assigned Date 1</span></th>
+            <th><span>Passed Back Date 2</span></th>
+            <th><span>Re Assigned Date 2</span></th>
+            <th><span>Passed Back Date 3</span></th>
+            <th><span>Re Assigned Date 3</span></th>
+            <th><span>Passed Back Date 4</span></th>
+            <th><span>Re Assigned Date 4</span></th>
+            <th><span>Passed Back Date 5</span></th>
+            <th><span>Re Assigned Date 5</span></th>
+            <th><span>Closed Date</span></th>
+            <th><span>Root Cause Description</span></th>
+            <th><span>Ter Date</span></th>
+            <th><span>Rrt Start Date</span></th>
+            <th><span>Rrt Completion Date</span></th>
+            <th><span>Live Date</span></th>
+            <th><span>Rca Fix Success</span></th>
+            <th><span>Ops Sla Breached</span></th>
+            <th><span>Ticket</span></th>
+            <th><span>State</span></th>
+            <th><span>Domain</span></th>
+            <th><span>Category</span></th>
+            <th><span>Impact</span></th>
+            <th><span>Priority</span></th>
+            <th><span>Group</span></th>
+            <th><span>Issuetype</span></th>
+            <th><span>Incidenttype</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let l2query of l2queries ;trackBy: trackId">
+                <td><a [routerLink]="['/l-2-query', l2query.id, 'view' ]">{{l2query.id}}</a></td>
+                <td>{{l2query.stk_number}}</td>
+                <td>{{l2query.stk_description}}</td>
+                <td>{{l2query.stk_start_date | date:'medium'}}</td>
+                <td>{{l2query.requested_date | date:'medium'}}</td>
+                <td>{{l2query.responded_date | date:'medium'}}</td>
+                <td>{{l2query.stk_comment}}</td>
+                <td>{{l2query.modified_time | date:'medium'}}</td>
+                <td>{{l2query.rca_completed}}</td>
+                <td>{{l2query.rca_completed_date | date:'medium'}}</td>
+                <td>{{l2query.nttdata_start_date | date:'medium'}}</td>
+                <td>{{l2query.solution_found}}</td>
+                <td>{{l2query.solution_found_date | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date1 | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date1 | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date2 | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date2 | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date3 | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date3 | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date4 | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date4 | date:'medium'}}</td>
+                <td>{{l2query.passed_back_date5 | date:'medium'}}</td>
+                <td>{{l2query.re_assigned_date5 | date:'medium'}}</td>
+                <td>{{l2query.closed_date | date:'medium'}}</td>
+                <td>{{l2query.root_cause_description}}</td>
+                <td>{{l2query.ter_date | date:'medium'}}</td>
+                <td>{{l2query.rrt_start_date | date:'medium'}}</td>
+                <td>{{l2query.rrt_completion_date | date:'medium'}}</td>
+                <td>{{l2query.live_date | date:'medium'}}</td>
+                <td>{{l2query.rca_fix_success}}</td>
+                <td>{{l2query.ops_sla_breached}}</td>
+                <td>
+                    <div *ngIf="l2query.ticket">
+                        <a [routerLink]="['../ticket', l2query.ticket?.id, 'view' ]" >{{l2query.ticket?.id}}</a>
+                    </div>
+                </td>
+                
+                <td>
+                    <div *ngIf="l2query.issuetype">
+                        <a [routerLink]="['../issuetype', l2query.issuetype?.id, 'view' ]" >{{l2query.issuetype?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="l2query.incidenttype">
+                        <a [routerLink]="['../incidenttype', l2query.incidenttype?.id, 'view' ]" >{{l2query.incidenttype?.id}}</a>
+                    </div>
+                </td>
+                
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->

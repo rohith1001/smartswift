@@ -1,0 +1,199 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pc-tracker-heading">Create or edit a Pc Tracker</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pc_tracker.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pc_tracker.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_elf_id">Elf Id</label>
+                    <input type="text" class="form-control" name="elf_id" id="field_elf_id"
+                        [(ngModel)]="pc_tracker.elf_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="pc_tracker.title" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_system">System</label>
+                    <input type="text" class="form-control" name="system" id="field_system"
+                        [(ngModel)]="pc_tracker.system" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date_received">Date Received</label>
+                    <div class="d-flex">
+                        <input id="field_date_received" type="datetime-local" class="form-control" name="date_received" [(ngModel)]="date_received"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_iia_delivery_date_planned">Iia Delivery Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_iia_delivery_date_planned" type="datetime-local" class="form-control" name="iia_delivery_date_planned" [(ngModel)]="iia_delivery_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_iia_delivery_date_actual">Iia Delivery Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_iia_delivery_date_actual" type="datetime-local" class="form-control" name="iia_delivery_date_actual" [(ngModel)]="iia_delivery_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dcd_delivery_date_planned">Dcd Delivery Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_dcd_delivery_date_planned" type="datetime-local" class="form-control" name="dcd_delivery_date_planned" [(ngModel)]="dcd_delivery_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dcd_delivery_date_actual">Dcd Delivery Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_dcd_delivery_date_actual" type="datetime-local" class="form-control" name="dcd_delivery_date_actual" [(ngModel)]="dcd_delivery_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wr_acknowledge_date_planned">Wr Acknowledge Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_wr_acknowledge_date_planned" type="datetime-local" class="form-control" name="wr_acknowledge_date_planned" [(ngModel)]="wr_acknowledge_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wr_acknowledge_date_actual">Wr Acknowledge Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_wr_acknowledge_date_actual" type="datetime-local" class="form-control" name="wr_acknowledge_date_actual" [(ngModel)]="wr_acknowledge_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wr_costready_date_planned">Wr Costready Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_wr_costready_date_planned" type="datetime-local" class="form-control" name="wr_costready_date_planned" [(ngModel)]="wr_costready_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wr_costready_date_actual">Wr Costready Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_wr_costready_date_actual" type="datetime-local" class="form-control" name="wr_costready_date_actual" [(ngModel)]="wr_costready_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hlcd_delivery_date_planned">Hlcd Delivery Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_hlcd_delivery_date_planned" type="datetime-local" class="form-control" name="hlcd_delivery_date_planned" [(ngModel)]="hlcd_delivery_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hlcd_delivery_date_actual">Hlcd Delivery Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_hlcd_delivery_date_actual" type="datetime-local" class="form-control" name="hlcd_delivery_date_actual" [(ngModel)]="hlcd_delivery_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_test_ready_date_planned">Test Ready Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_test_ready_date_planned" type="datetime-local" class="form-control" name="test_ready_date_planned" [(ngModel)]="test_ready_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_test_ready_date_actual">Test Ready Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_test_ready_date_actual" type="datetime-local" class="form-control" name="test_ready_date_actual" [(ngModel)]="test_ready_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_launch_date_planned">Launch Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_launch_date_planned" type="datetime-local" class="form-control" name="launch_date_planned" [(ngModel)]="launch_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_launch_date_actual">Launch Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_launch_date_actual" type="datetime-local" class="form-control" name="launch_date_actual" [(ngModel)]="launch_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_delivery_date_planned">Delivery Date Planned</label>
+                    <div class="d-flex">
+                        <input id="field_delivery_date_planned" type="datetime-local" class="form-control" name="delivery_date_planned" [(ngModel)]="delivery_date_planned"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_delivery_date_actual">Delivery Date Actual</label>
+                    <div class="d-flex">
+                        <input id="field_delivery_date_actual" type="datetime-local" class="form-control" name="delivery_date_actual" [(ngModel)]="delivery_date_actual"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                        [(ngModel)]="pc_tracker.comments" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control" name="modified_time" [(ngModel)]="modified_time"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_major">Major</label>
+                    <input type="number" class="form-control" name="major" id="field_major"
+                        [(ngModel)]="pc_tracker.major" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_minor">Minor</label>
+                    <input type="number" class="form-control" name="minor" id="field_minor"
+                        [(ngModel)]="pc_tracker.minor" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cosmetic">Cosmetic</label>
+                    <input type="number" class="form-control" name="cosmetic" id="field_cosmetic"
+                        [(ngModel)]="pc_tracker.cosmetic" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_elf_status">Elf Status</label>
+                    <select class="form-control" id="field_elf_status" name="elf_status" [(ngModel)]="pc_tracker.elf_status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="elf_statusOption.id === pc_tracker.elf_status?.id ? pc_tracker.elf_status : elf_statusOption" *ngFor="let elf_statusOption of elf_statuses; trackBy: trackElf_statusById">{{elf_statusOption.status}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_configtype">Configtype</label>
+                    <select class="form-control" id="field_configtype" name="configtype" [(ngModel)]="pc_tracker.configtype" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="configtypeOption.id === pc_tracker.configtype?.id ? pc_tracker.configtype : configtypeOption" *ngFor="let configtypeOption of configtypes; trackBy: trackConfigtypeById">{{configtypeOption.type}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,442 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-l-2-query-heading">
+                            <span *ngIf="l2query.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> L2 Query
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_number">Incident ref</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_number" id="field_stk_number"
+                                [(ngModel)]="l2query.stk_number" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_domain">Domain</label>
+                            <select class="form-control form-control-custom" id="field_domain" name="domain"
+                                [(ngModel)]="l2query.domain" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="domainOption.id === l2query.domain?.id ? l2query.domain : domainOption"
+                                    *ngFor="let domainOption of domains; trackBy: trackDomainById">{{domainOption.domain_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_description">Description</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_description" id="field_stk_description"
+                                [(ngModel)]="l2query.stk_description" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">System</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="l2query.group"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === l2query.group?.id ? l2query.group : groupOption"
+                                    *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_priority">Priority</label>
+                            <select class="form-control form-control-custom" id="field_priority" name="priority"
+                                [(ngModel)]="l2query.priority" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="priorityOption.id === l2query.priority?.id ? l2query.priority : priorityOption"
+                                    *ngFor="let priorityOption of priorities; trackBy: trackPriorityById">{{priorityOption.priority_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_state">State</label>
+                            <select class="form-control form-control-custom" id="field_state" name="state" [(ngModel)]="l2query.state"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="stateOption.id === l2query.state?.id ? l2query.state : stateOption"
+                                    *ngFor="let stateOption of states; trackBy: trackStateById">{{stateOption.state_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_requested_date">Requested On</label>
+                            <div class="d-flex">
+                                <input id="field_requested_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="requested_date" [(ngModel)]="requested_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_responded_date">Responded On</label>
+                            <div class="d-flex">
+                                <input id="field_responded_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="responded_date" [(ngModel)]="responded_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_stk_comment">Comment</label>
+                            <input type="text" class="form-control form-control-custom" name="stk_comment" id="field_stk_comment"
+                                [(ngModel)]="l2query.stk_comment" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date">Passed Back
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date" [(ngModel)]="passed_back_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date">Re Assigned
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date" [(ngModel)]="re_assigned_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date1">Passed Back
+                                Date 1</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date1" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date1" [(ngModel)]="passed_back_date1" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date1">Re Assigned
+                                Date 1</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date1" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date1" [(ngModel)]="re_assigned_date1" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date2">Passed Back
+                                Date 2</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date2" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date2" [(ngModel)]="passed_back_date2" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date2">Re Assigned
+                                Date 2</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date2" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date2" [(ngModel)]="re_assigned_date2" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date3">Passed Back
+                                Date 3</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date3" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date3" [(ngModel)]="passed_back_date3" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date3">Re Assigned
+                                Date 3</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date3" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date3" [(ngModel)]="re_assigned_date3" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date4">Passed Back
+                                Date 4</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date4" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date4" [(ngModel)]="passed_back_date4" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date4">Re Assigned
+                                Date 4</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date4" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date4" [(ngModel)]="re_assigned_date4" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_passed_back_date5">Passed Back
+                                Date 5</label>
+                            <div class="d-flex">
+                                <input id="field_passed_back_date5" type="datetime-local" class="form-control form-control-custom"
+                                    name="passed_back_date5" [(ngModel)]="passed_back_date5" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_re_assigned_date5">Re Assigned
+                                Date 5</label>
+                            <div class="d-flex">
+                                <input id="field_re_assigned_date5" type="datetime-local" class="form-control form-control-custom"
+                                    name="re_assigned_date5" [(ngModel)]="re_assigned_date5" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_completed">Rca Completed</label>
+                            <input type="number" class="form-control form-control-custom" name="rca_completed" id="field_rca_completed"
+                                [(ngModel)]="l2query.rca_completed" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_completed_date">Rca Completed
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_rca_completed_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rca_completed_date" [(ngModel)]="rca_completed_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_root_cause_description">Root
+                                Cause Description</label>
+                            <input type="text" class="form-control form-control-custom" name="root_cause_description"
+                                id="field_root_cause_description" [(ngModel)]="l2query.root_cause_description" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_solution_found">Solution
+                                Identified</label>
+                            <input type="number" class="form-control form-control-custom" name="solution_found" id="field_solution_found"
+                                [(ngModel)]="l2query.solution_found" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_solution_found_date">Solution
+                                Identified Date</label>
+                            <div class="d-flex">
+                                <input id="field_solution_found_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="solution_found_date" [(ngModel)]="solution_found_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_ter_date">TER Date</label>
+                            <div class="d-flex">
+                                <input id="field_ter_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="ter_date" [(ngModel)]="ter_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rrt_start_date">RRT Start Date</label>
+                            <div class="d-flex">
+                                <input id="field_rrt_start_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rrt_start_date" [(ngModel)]="rrt_start_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!l2query.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rrt_completion_date">RRT
+                                Completion Date</label>
+                            <div class="d-flex">
+                                <input id="field_rrt_completion_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="rrt_completion_date" [(ngModel)]="rrt_completion_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_live_date">Live Date</label>
+                            <div class="d-flex">
+                                <input id="field_live_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="live_date" [(ngModel)]="live_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_issuetype">Type of Issue</label>
+                            <select class="form-control form-control-custom" id="field_issuetype" name="issuetype"
+                                [(ngModel)]="l2query.issuetype">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="issuetypeOption.id === l2query.issuetype?.id ? l2query.issuetype : issuetypeOption"
+                                    *ngFor="let issuetypeOption of issuetypes; trackBy: trackIssuetypeById">{{issuetypeOption.issue_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_rca_fix_success">Is RC fixed
+                                successfully?</label>
+                            <input type="number" class="form-control form-control-custom" name="rca_fix_success" id="field_rca_fix_success"
+                                [(ngModel)]="l2query.rca_fix_success" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="l2query.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stk_start_date">Stk Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_stk_start_date" type="datetime-local" class="form-control" name="stk_start_date" [(ngModel)]="stk_start_date"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control" name="modified_time" [(ngModel)]="modified_time"
+                        />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nttdata_start_date">Nttdata Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_nttdata_start_date" type="datetime-local" class="form-control" name="nttdata_start_date" [(ngModel)]="nttdata_start_date"
+                        />
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_closed_date">Closed Date</label>
+                    <div class="d-flex">
+                        <input id="field_closed_date" type="datetime-local" class="form-control" name="closed_date" [(ngModel)]="closed_date"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ops_sla_breached">Ops Sla Breached</label>
+                    <input type="checkbox" class="form-control" name="ops_sla_breached" id="field_ops_sla_breached"
+                        [(ngModel)]="l2query.ops_sla_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ticket">Ticket</label>
+                    <select class="form-control" id="field_ticket" name="ticket" [(ngModel)]="l2query.ticket" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ticketOption.id === l2query.ticket?.id ? l2query.ticket : ticketOption" *ngFor="let ticketOption of tickets; trackBy: trackTicketById">{{ticketOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_category">Category</label>
+                    <select class="form-control" id="field_category" name="category" [(ngModel)]="l2query.category" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categoryOption.id === l2query.category?.id ? l2query.category : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_impact">Impact</label>
+                    <select class="form-control" id="field_impact" name="impact" [(ngModel)]="l2query.impact" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="impactOption.id === l2query.impact?.id ? l2query.impact : impactOption" *ngFor="let impactOption of impacts; trackBy: trackImpactById">{{impactOption.id}}</option>
+                    </select>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_incidenttype">Incidenttype</label>
+                    <select class="form-control" id="field_incidenttype" name="incidenttype" [(ngModel)]="l2query.incidenttype" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="incidenttypeOption.id === l2query.incidenttype?.id ? l2query.incidenttype : incidenttypeOption" *ngFor="let incidenttypeOption of incidenttypes; trackBy: trackIncidenttypeById">{{incidenttypeOption.id}}</option>
+                    </select>
+                </div>
+            </div>-->
+        </form>
+    </div>
+</div>

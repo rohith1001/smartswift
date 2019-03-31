@@ -1,0 +1,164 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available HLDs</span>
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-hld"
+                        [routerLink]="['/hld/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create HLD
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="hlds">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>ELF Id</span></td>
+                            <td><span>Project Name</span></td>
+                            <td><span>System</span></td>
+                            <td><span>Request Date</span></td>
+                            <td><span>Actual Acknowledgement Date</span></td>
+                            <td><span>Delivery Date Planned</span></td>
+                            <td><span>Delivery Date Actual</span></td>
+                            <td><span>Agreed Date</span></td>
+                            <td><span>Hold Date</span></td>
+                            <td><span>Final Date</span></td>
+                            <td><span>Requestor</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let hld of hlds ;trackBy: trackId">
+                            <td><a [routerLink]="['/hld', hld.id, 'view' ]">{{hld.id}}</a></td>
+                            <td>{{hld.elf_id}}</td>
+                            <td>{{hld.project_name}}</td>
+                            <td>
+                                <div *ngIf="hld.group">
+                                    <a [routerLink]="['../group', hld.group?.id, 'view' ]">{{hld.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{hld.request_date | date:'medium'}}</td>
+                            <td>{{hld.actual_acknowledgement_date | date:'medium'}}</td>
+                            <td>{{hld.delivery_date_planned | date:'medium'}}</td>
+                            <td>{{hld.delivery_date_actual | date:'medium'}}</td>
+                            <td>{{hld.agreed_date | date:'medium'}}</td>
+                            <td>{{hld.hold_date | date:'medium'}}</td>
+                            <td>{{hld.finaldate | date:'medium'}}</td>
+                            <td>{{hld.requestor}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/hld', hld.id, 'view' ]" class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/hld', hld.id, 'edit']" class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'hld/'+ hld.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--<div class="table-responsive" *ngIf="hlds">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Elf Id</span></th>
+                    <th><span>Project Name</span></th>
+                    <th><span>Request Date</span></th>
+                    <th><span>Actual Acknowledgement Date</span></th>
+                    <th><span>Delivery Date Planned</span></th>
+                    <th><span>Delivery Date Actual</span></th>
+                    <th><span>Agreed Date</span></th>
+                    <th><span>Hold Flag</span></th>
+                    <th><span>Hold Date</span></th>
+                    <th><span>Hold Days</span></th>
+                    <th><span>Modified Time</span></th>
+                    <th><span>Comments</span></th>
+                    <th><span>Wif Submission Date</span></th>
+                    <th><span>Kpi 1</span></th>
+                    <th><span>Kpi 1 Breached</span></th>
+                    <th><span>Qm 1</span></th>
+                    <th><span>Qm 1 Breached</span></th>
+                    <th><span>User Id</span></th>
+                    <th><span>Qm 2</span></th>
+                    <th><span>Qm 2 Breached</span></th>
+                    <th><span>Finaldate</span></th>
+                    <th><span>Requestor</span></th>
+                    <th><span>Group</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hld of hlds ;trackBy: trackId">
+                    <td><a [routerLink]="['/hld', hld.id, 'view' ]">{{hld.id}}</a></td>
+                    <td>{{hld.elf_id}}</td>
+                    <td>{{hld.project_name}}</td>
+                    <td>{{hld.request_date | date:'medium'}}</td>
+                    <td>{{hld.actual_acknowledgement_date | date:'medium'}}</td>
+                    <td>{{hld.delivery_date_planned | date:'medium'}}</td>
+                    <td>{{hld.delivery_date_actual | date:'medium'}}</td>
+                    <td>{{hld.agreed_date | date:'medium'}}</td>
+                    <td>{{hld.hold_flag}}</td>
+                    <td>{{hld.hold_date | date:'medium'}}</td>
+                    <td>{{hld.hold_days}}</td>
+                    <td>{{hld.modified_time | date:'medium'}}</td>
+                    <td>{{hld.comments}}</td>
+                    <td>{{hld.wif_submission_date | date:'medium'}}</td>
+                    <td>{{hld.kpi1}}</td>
+                    <td>{{hld.kpi1_breached}}</td>
+                    <td>{{hld.qm1}}</td>
+                    <td>{{hld.qm1_breached}}</td>
+                    <td>{{hld.user_id}}</td>
+                    <td>{{hld.qm2}}</td>
+                    <td>{{hld.qm2_breached}}</td>
+                    <td>{{hld.finaldate | date:'medium'}}</td>
+                    <td>{{hld.requestor}}</td>
+                    <td>
+                        <div *ngIf="hld.group">
+                            <a [routerLink]="['../group', hld.group?.id, 'view' ]">{{hld.group?.id}}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/hld', hld.id, 'view' ]" class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/hld', hld.id, 'edit']" class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'hld/'+ hld.id + '/delete'} }]"
+                                replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+</div>

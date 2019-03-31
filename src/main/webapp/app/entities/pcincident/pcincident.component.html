@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Pcincidents</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-pcincident" [routerLink]="['/pcincident/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Pcincident
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="pcincidents">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Reference</span></th>
+            <th><span>Title</span></th>
+            <th><span>System</span></th>
+            <th><span>Date Recieved</span></th>
+            <th><span>Priority</span></th>
+            <th><span>Request Id</span></th>
+            <th><span>Release Date</span></th>
+            <th><span>Del Six Month</span></th>
+            <th><span>User Id</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pcincident of pcincidents ;trackBy: trackId">
+                <td><a [routerLink]="['/pcincident', pcincident.id, 'view' ]">{{pcincident.id}}</a></td>
+                <td>{{pcincident.reference}}</td>
+                <td>{{pcincident.title}}</td>
+                <td>{{pcincident.system}}</td>
+                <td>{{pcincident.date_recieved | date:'mediumDate'}}</td>
+                <td>{{pcincident.priority}}</td>
+                <td>{{pcincident.request_id}}</td>
+                <td>{{pcincident.release_date | date:'mediumDate'}}</td>
+                <td>{{pcincident.del_six_month}}</td>
+                <td>{{pcincident.user_id}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/pcincident', pcincident.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/pcincident', pcincident.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pcincident/'+ pcincident.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

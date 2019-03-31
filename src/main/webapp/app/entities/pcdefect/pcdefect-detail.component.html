@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pcdefect">
+            <h2><span>Pcdefect</span> {{pcdefect.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Defect Id</span></dt>
+                <dd>
+                    <span>{{pcdefect.defect_id}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{pcdefect.description}}</span>
+                </dd>
+                <dt><span>System Impacted</span></dt>
+                <dd>
+                    <span>{{pcdefect.system_impacted}}</span>
+                </dd>
+                <dt><span>Date Raised</span></dt>
+                <dd>
+                    <span>{{pcdefect.date_raised}}</span>
+                </dd>
+                <dt><span>Severity</span></dt>
+                <dd>
+                    <span>{{pcdefect.severity}}</span>
+                </dd>
+                <dt><span>Date Closed</span></dt>
+                <dd>
+                    <span>{{pcdefect.date_closed}}</span>
+                </dd>
+                <dt><span>Request Id</span></dt>
+                <dd>
+                    <span>{{pcdefect.request_id}}</span>
+                </dd>
+                <dt><span>Release Date</span></dt>
+                <dd>
+                    <span>{{pcdefect.release_date}}</span>
+                </dd>
+                <dt><span>Comments</span></dt>
+                <dd>
+                    <span>{{pcdefect.comments}}</span>
+                </dd>
+                <dt><span>Root Cause</span></dt>
+                <dd>
+                    <span>{{pcdefect.root_cause}}</span>
+                </dd>
+                <dt><span>User Id</span></dt>
+                <dd>
+                    <span>{{pcdefect.user_id}}</span>
+                </dd>
+                <dt><span>Testedbyamdocs</span></dt>
+                <dd>
+                    <span>{{pcdefect.testedbyamdocs}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pcdefect', pcdefect.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

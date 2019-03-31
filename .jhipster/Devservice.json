@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "service_type",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181105092635",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "devservice",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

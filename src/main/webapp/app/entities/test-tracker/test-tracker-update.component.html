@@ -1,0 +1,307 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-test-tracker-heading">
+                            <span *ngIf="test_tracker.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> Test Tracker
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_elf_id">ELF Id</label>
+                            <input type="text" class="form-control form-control-custom" name="elf_id" id="field_elf_id"
+                                [(ngModel)]="test_tracker.elf_id" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_number">Defect Number</label>
+                            <input type="text" class="form-control form-control-custom" name="defect_number" id="field_defect_number"
+                                [(ngModel)]="test_tracker.defect_number" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_severity">Defect Severity</label>
+                            <input type="text" class="form-control form-control-custom" name="defect_severity" id="field_defect_severity"
+                                [(ngModel)]="test_tracker.defect_severity" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_severity">Severity</label>
+                            <select class="form-control form-control-custom" id="field_severity" name="severity"
+                                [(ngModel)]="test_tracker.severity">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="severityOption.id === test_tracker.severity?.id ? test_tracker.severity : severityOption"
+                                    *ngFor="let severityOption of severities; trackBy: trackSeverityById">{{severityOption.severity_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_domain_name">Domain Name</label>
+                            <input type="text" class="form-control form-control-custom" name="domain_name" id="field_domain_name"
+                                [(ngModel)]="test_tracker.domain_name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">Group</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="test_tracker.group">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === test_tracker.group?.id ? test_tracker.group : groupOption"
+                                    *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_project_name">Project Name</label>
+                            <input type="text" class="form-control form-control-custom" name="project_name" id="field_project_name"
+                                [(ngModel)]="test_tracker.project_name" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_test_phase">Test Phase</label>
+                            <input type="text" class="form-control form-control-custom" name="test_phase" id="field_test_phase"
+                                [(ngModel)]="test_tracker.test_phase" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_detected_on_date">Detected On
+                                Date</label>
+                            <div class="input-group">
+                                <input id="field_detected_on_date" type="text" class="form-control form-control-custom"
+                                    name="detected_on_date" ngbDatepicker #detected_on_dateDp="ngbDatepicker"
+                                    [(ngModel)]="test_tracker.detected_on_date" required />
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-sm btn-secondary" (click)="detected_on_dateDp.toggle()">
+                                        <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_first_fix_date">First Fix Date</label>
+                            <div class="d-flex">
+                                <input id="field_first_fix_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="first_fix_date" [(ngModel)]="first_fix_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_last_fix_date">Last Fix Date</label>
+                            <div class="d-flex">
+                                <input id="field_last_fix_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="last_fix_date" [(ngModel)]="last_fix_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_code_fix">Code Fix</label>
+                            <select class="form-control form-control-custom" id="field_code_fix" name="code_fix"
+                                [(ngModel)]="test_tracker.code_fix" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="optionsOption.id === test_tracker.code_fix?.id ? test_tracker.code_fix : optionsOption"
+                                    *ngFor="let optionsOption of options; trackBy: trackOptionsById">{{optionsOption.option_type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_fix_due_date">Fix Due Date</label>
+                            <div class="d-flex">
+                                <input id="field_fix_due_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="fix_due_date" [(ngModel)]="fix_due_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_concession_defect">Is Concession
+                                Defect?</label>
+                            <select class="form-control form-control-custom" id="field_concession_defect" name="concession_defect"
+                                [(ngModel)]="test_tracker.concession_defect" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="optionsOption.id === test_tracker.concession_defect?.id ? test_tracker.concession_defect : optionsOption"
+                                    *ngFor="let optionsOption of options; trackBy: trackOptionsById">{{optionsOption.option_type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_status">Status</label>
+                            <input type="text" class="form-control form-control-custom" name="status" id="field_status"
+                                [(ngModel)]="test_tracker.status" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_resolution">Resolution</label>
+                            <input type="text" class="form-control form-control-custom" name="resolution" id="field_resolution"
+                                [(ngModel)]="test_tracker.resolution" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_assingned_in_qc">Assigned In QC?</label>
+                            <select class="form-control form-control-custom" id="field_assingned_in_qc" name="assingned_in_qc"
+                                [(ngModel)]="test_tracker.assingned_in_qc" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="optionsOption.id === test_tracker.assingned_in_qc?.id ? test_tracker.assingned_in_qc : optionsOption"
+                                    *ngFor="let optionsOption of options; trackBy: trackOptionsById">{{optionsOption.option_type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_closing_date">Closing Date</label>
+                            <div class="d-flex">
+                                <input id="field_closing_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="closing_date" [(ngModel)]="closing_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_priority">Priority</label>
+                            <input type="text" class="form-control form-control-custom" name="priority" id="field_priority"
+                                [(ngModel)]="test_tracker.priority" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_problem_category">Problem
+                                Category</label>
+                            <input type="text" class="form-control form-control-custom" name="problem_category" id="field_problem_category"
+                                [(ngModel)]="test_tracker.problem_category" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_comments">Comments</label>
+                            <input type="text" class="form-control form-control-custom" name="comments" id="field_comments"
+                                [(ngModel)]="test_tracker.comments" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="test_tracker.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div>
+                <div class="form-group" [hidden]="!test_tracker.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="test_tracker.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control" name="modified_time" [(ngModel)]="modified_time"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user_id">User Id</label>
+                    <input type="number" class="form-control" name="user_id" id="field_user_id"
+                        [(ngModel)]="test_tracker.user_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1">Km 1</label>
+                    <input type="text" class="form-control" name="km1" id="field_km1"
+                        [(ngModel)]="test_tracker.km1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1_breached">Km 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="km1_breached" id="field_km1_breached"
+                        [(ngModel)]="test_tracker.km1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km2">Km 2</label>
+                    <input type="text" class="form-control" name="km2" id="field_km2"
+                        [(ngModel)]="test_tracker.km2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km2_breached">Km 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="km2_breached" id="field_km2_breached"
+                        [(ngModel)]="test_tracker.km2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1">Qm 1</label>
+                    <input type="text" class="form-control" name="qm1" id="field_qm1"
+                        [(ngModel)]="test_tracker.qm1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1_breached">Qm 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm1_breached" id="field_qm1_breached"
+                        [(ngModel)]="test_tracker.qm1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2">Qm 2</label>
+                    <input type="text" class="form-control" name="qm2" id="field_qm2"
+                        [(ngModel)]="test_tracker.qm2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2_breached">Qm 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm2_breached" id="field_qm2_breached"
+                        [(ngModel)]="test_tracker.qm2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm3">Qm 3</label>
+                    <input type="text" class="form-control" name="qm3" id="field_qm3"
+                        [(ngModel)]="test_tracker.qm3" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm3_breached">Qm 3 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm3_breached" id="field_qm3_breached"
+                        [(ngModel)]="test_tracker.qm3_breached" />
+                </div>
+
+                
+            </div>-->
+
+        </form>
+    </div>
+</div>

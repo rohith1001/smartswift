@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-11">
+        <h2>Welcome</h2>
+        <p class="hm-custom-label">This is homepage of Smart Swift...a tool to manage SLA reporting</p>
+
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="custom-bc alert" *ngSwitchCase="true">
+                <span class="hm-custom-label" id="home-logged-message" *ngIf="account"> You are logged in as user
+                    "{{account.login}}". </span>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>Create</h6>
+                            <hr>
+                            <ul>
+                                <li><a href="#/stk/new" class="form-control-label label-custom">Add STK</a></li>
+                                <li><a href="#/l-2-query/new" class="form-control-label label-custom">Add L2 Queries</a></li>
+                                <li><a href="#/iia/new" class="form-control-label label-custom">Add IIA Requests</a></li>
+                                <li><a href="#/hld/new" class="form-control-label label-custom">Add HLD Requests</a></li>
+                                <li><a href="#/development-tracker/new" class="form-control-label label-custom">Add Dev
+                                        Request</a></li>
+                                <li><a href="#/test-tracker/new" class="form-control-label label-custom">Add Test
+                                        Tracker Details</a></li>
+                                <li><a href="#/pctracker/new" class="form-control-label label-custom">Add PC Tracker
+                                        Details</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Manage</h6>
+                            <hr>
+                            <ul>
+                                <li><a href="#/stk" class="form-control-label label-custom">Display STK Details</a></li>
+                                <li><a href="#/l-2-query" class="form-control-label label-custom">Display L2 Queries</a></li>
+                                <li><a href="#/iia" class="form-control-label label-custom">Display IIA Requests</a></li>
+                                <li><a href="#/hld" class="form-control-label label-custom">Display HLD Requests</a></li>
+                                <li><a href="#/development-tracker" class="form-control-label label-custom">Display Dev
+                                        Requests</a></li>
+                                <li><a href="#/test-tracker" class="form-control-label label-custom">Display Test
+                                        Tracker</a></li>
+                                <li><a href="#/pctracker" class="form-control-label label-custom">Display PC Tracker</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Dashboard & Bulk Uploads</h6>
+                            <hr>
+                            <ul>
+                                <li><a href="#/samplebulk" class="form-control-label label-custom">Bulk Upload for PC
+                                        tracker</a></li>
+                                <li><a href="#/bulkincident/" class="form-control-label label-custom">Bulk Upload
+                                        for PC Incident</a></li>
+                                <li><a href="#/bulkdefect/" class="form-control-label label-custom">Bulk Upload for
+                                        PC Defect</a></li>
+                                <li><a href="#/bulkrelease/" class="form-control-label label-custom">Bulk Upload for
+                                        PC Release</a></li>
+                                <li><a href="#/monthlyreport/" class="form-control-label label-custom">Generate Monthly Report</a></li>
+                                <li><a href="#/dashboard" class="form-control-label label-custom">View Dashboard</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>Click here to </span>
+                <a (click)="login()">Sign In</a>
+            </div>
+            <div class="alert alert-warning" *ngSwitchCase="false">
+                <span>You don't have an account yet?</span>&nbsp;
+                <a routerLink="register">Register a new account</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "group",
+            "otherEntityName": "group",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "resolved",
+            "otherEntityName": "resolved",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "project_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "request_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "actual_acknowledgement_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "agreed_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_resubmitted_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hold_flag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hold_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hold_days",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "requestor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "finaldate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_resubmitted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "resubmission_request_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "km1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km1_breached",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181102102837",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "iia",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

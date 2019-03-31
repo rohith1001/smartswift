@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Priorities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-priority" [routerLink]="['/priority/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Priority
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="priorities">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Priority Name</span></th>
+            <th><span>Update Frequency</span></th>
+            <th><span>Ack Time</span></th>
+            <th><span>Restore Time</span></th>
+            <th><span>Operation Hours</span></th>
+            <th><span>Operational Days</span></th>
+            <th><span>Ticket</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let priority of priorities ;trackBy: trackId">
+                <td><a [routerLink]="['/priority', priority.id, 'view' ]">{{priority.id}}</a></td>
+                <td>{{priority.priority_name}}</td>
+                <td>{{priority.update_frequency}}</td>
+                <td>{{priority.ack_time | date:'mediumDate'}}</td>
+                <td>{{priority.restore_time | date:'mediumDate'}}</td>
+                <td>{{priority.operation_hours}}</td>
+                <td>{{priority.operational_days}}</td>
+                <td>
+                    <div *ngIf="priority.ticket">
+                        <a [routerLink]="['../ticket', priority.ticket?.id, 'view' ]" >{{priority.ticket?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/priority', priority.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/priority', priority.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'priority/'+ priority.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

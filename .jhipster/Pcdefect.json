@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "defect_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "system_impacted",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_raised",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "severity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_closed",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "request_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "release_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "root_cause",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "testedbyamdocs",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181113061407",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "pcdefect",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

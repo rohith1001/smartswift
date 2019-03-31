@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Hld.
+    -->
+    <changeSet id="20181102104051-1" author="jhipster">
+        <createTable tableName="hld">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="elf_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="project_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="request_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="actual_acknowledgement_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="delivery_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="delivery_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="agreed_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hold_flag" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hold_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hold_days" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modified_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="comments" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wif_submission_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="kpi_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="kpi_1_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_1_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="user_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qm_2_breached" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="finaldate" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="requestor" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="group_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="hld" columnName="request_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="actual_acknowledgement_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="delivery_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="delivery_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="agreed_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="hold_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="modified_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="wif_submission_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="hld" columnName="finaldate" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

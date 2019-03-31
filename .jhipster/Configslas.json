@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181220122825",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "configslas",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

@@ -1,0 +1,218 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="iia">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Iia</span> {{iia.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Elf Id</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.elf_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Project Name</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.project_name}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Request Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.request_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Actual Acknowledgement Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.actual_acknowledgement_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.delivery_date_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.delivery_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Agreed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.agreed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Iia Resubmitted Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.iia_resubmitted_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Flag</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.hold_flag}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.hold_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Days</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.hold_days}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Requestor</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.requestor | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Comments</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.comments | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Finaldate</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.finaldate | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Iia Resubmitted</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.iia_resubmitted | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Resubmission Request Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{iia.resubmission_request_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="iia.group">
+                                <a [routerLink]="['/group', iia.group?.id, 'view']">{{iia.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Resolved</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="iia.resolved">
+                                <a [routerLink]="['/resolved', iia.resolved?.id, 'view']">{{iia.resolved?.id}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.kpi1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.kpi1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.km1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{iia.km1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/iia', iia.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

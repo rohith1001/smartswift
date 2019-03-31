@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Pc_tracker.
+    -->
+    <changeSet id="20181109061749-1" author="jhipster">
+        <createTable tableName="pc_tracker">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="elf_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_system" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="date_received" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="iia_delivery_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="iia_delivery_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dcd_delivery_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dcd_delivery_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wr_acknowledge_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wr_acknowledge_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wr_costready_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wr_costready_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hlcd_delivery_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hlcd_delivery_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="test_ready_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="test_ready_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="launch_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="launch_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="delivery_date_planned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="delivery_date_actual" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="comments" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modified_time" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="major" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="minor" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cosmetic" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="elf_status_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="configtype_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="pc_tracker" columnName="date_received" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="iia_delivery_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="iia_delivery_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="dcd_delivery_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="dcd_delivery_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="wr_acknowledge_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="wr_acknowledge_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="wr_costready_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="wr_costready_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="hlcd_delivery_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="hlcd_delivery_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="test_ready_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="test_ready_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="launch_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="launch_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="delivery_date_planned" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="delivery_date_actual" columnDataType="datetime"/>
+        <dropDefaultValue tableName="pc_tracker" columnName="modified_time" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

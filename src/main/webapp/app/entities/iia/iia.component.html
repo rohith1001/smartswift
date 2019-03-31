@@ -1,0 +1,176 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available IIAs</span>
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-iia"
+                        [routerLink]="['/iia/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create IIA
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="iias">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>ELF Id</span></td>
+                            <td><span>Project Name</span></td>
+                            <td><span>System</span></td>
+                            <td><span>Request Date</span></td>
+                            <td><span>Actual Acknowledgement Date</span></td>
+                            <td><span>Delivery Date Planned</span></td>
+                            <td><span>Delivery Date Actual</span></td>
+                            <td><span>Agreed Date</span></td>
+                            <td><span>Hold Date</span></td>
+                            <td><span>Final Date</span></td>
+                            <td><span>Requestor</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let iia of iias ;trackBy: trackId">
+                            <td><a [routerLink]="['/iia', iia.id, 'view' ]">{{iia.id}}</a></td>
+                            <td>{{iia.elf_id}}</td>
+                            <td>{{iia.project_name}}</td>
+                            <td>
+                                <div *ngIf="iia.group">
+                                    <a [routerLink]="['../group', iia.group?.id, 'view' ]">{{iia.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{iia.request_date | date:'medium'}}</td>
+                            <td>{{iia.actual_acknowledgement_date | date:'medium'}}</td>
+                            <td>{{iia.delivery_date_planned | date:'medium'}}</td>
+                            <td>{{iia.delivery_date_actual | date:'medium'}}</td>
+                            <td>{{iia.agreed_date | date:'medium'}}</td>
+                            <td>{{iia.hold_date | date:'medium'}}</td>
+                            <td>{{iia.finaldate | date:'medium'}}</td>
+                            <td>{{iia.requestor}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/iia', iia.id, 'view' ]" class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/iia', iia.id, 'edit']" class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'iia/'+ iia.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--<div class="table-responsive" *ngIf="iias">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Elf Id</span></th>
+                    <th><span>Project Name</span></th>
+                    <th><span>Request Date</span></th>
+                    <th><span>Actual Acknowledgement Date</span></th>
+                    <th><span>Delivery Date Planned</span></th>
+                    <th><span>Delivery Date Actual</span></th>
+                    <th><span>Agreed Date</span></th>
+                    <th><span>Iia Resubmitted Date</span></th>
+                    <th><span>Hold Flag</span></th>
+                    <th><span>Hold Date</span></th>
+                    <th><span>Hold Days</span></th>
+                    <th><span>Modified Time</span></th>
+                    <th><span>Requestor</span></th>
+                    <th><span>Comments</span></th>
+                    <th><span>Kpi 1</span></th>
+                    <th><span>Kpi 1 Breached</span></th>
+                    <th><span>Qm 1</span></th>
+                    <th><span>Qm 1 Breached</span></th>
+                    <th><span>Qm 2</span></th>
+                    <th><span>Qm 2 Breached</span></th>
+                    <th><span>Finaldate</span></th>
+                    <th><span>Iia Resubmitted</span></th>
+                    <th><span>Resubmission Request Date</span></th>
+                    <th><span>Km 1</span></th>
+                    <th><span>Km 1 Breached</span></th>
+                    <th><span>Group</span></th>
+                    <th><span>Resolved</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let iia of iias ;trackBy: trackId">
+                    <td><a [routerLink]="['/iia', iia.id, 'view' ]">{{iia.id}}</a></td>
+                    <td>{{iia.elf_id}}</td>
+                    <td>{{iia.project_name}}</td>
+                    <td>{{iia.request_date | date:'medium'}}</td>
+                    <td>{{iia.actual_acknowledgement_date | date:'medium'}}</td>
+                    <td>{{iia.delivery_date_planned | date:'medium'}}</td>
+                    <td>{{iia.delivery_date_actual | date:'medium'}}</td>
+                    <td>{{iia.agreed_date | date:'medium'}}</td>
+                    <td>{{iia.iia_resubmitted_date | date:'medium'}}</td>
+                    <td>{{iia.hold_flag}}</td>
+                    <td>{{iia.hold_date | date:'medium'}}</td>
+                    <td>{{iia.hold_days}}</td>
+                    <td>{{iia.modified_time | date:'medium'}}</td>
+                    <td>{{iia.requestor}}</td>
+                    <td>{{iia.comments}}</td>
+                    <td>{{iia.kpi1}}</td>
+                    <td>{{iia.kpi1_breached}}</td>
+                    <td>{{iia.qm1}}</td>
+                    <td>{{iia.qm1_breached}}</td>
+                    <td>{{iia.qm2}}</td>
+                    <td>{{iia.qm2_breached}}</td>
+                    <td>{{iia.finaldate | date:'medium'}}</td>
+                    <td>{{iia.iia_resubmitted}}</td>
+                    <td>{{iia.resubmission_request_date | date:'medium'}}</td>
+                    <td>{{iia.km1}}</td>
+                    <td>{{iia.km1_breached}}</td>
+                    <td>
+                        <div *ngIf="iia.group">
+                            <a [routerLink]="['../group', iia.group?.id, 'view' ]">{{iia.group?.id}}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="iia.resolved">
+                            <a [routerLink]="['../resolved', iia.resolved?.id, 'view' ]">{{iia.resolved?.id}}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/iia', iia.id, 'view' ]" class="btn btn-info btn-sm">
+                                <fa-icon [icon]="'eye'"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/iia', iia.id, 'edit']" class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'iia/'+ iia.id + '/delete'} }]"
+                                replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Test_tracker.
+    -->
+    <changeSet id="20181105101533-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="assingned_in_qc_id"
+                                 baseTableName="test_tracker"
+                                 constraintName="fk_test_tracker_assingned_in_qc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="options"/>
+
+        <addForeignKeyConstraint baseColumnNames="code_fix_id"
+                                 baseTableName="test_tracker"
+                                 constraintName="fk_test_tracker_code_fix_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="options"/>
+
+        <addForeignKeyConstraint baseColumnNames="concession_defect_id"
+                                 baseTableName="test_tracker"
+                                 constraintName="fk_test_tracker_concession_defect_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="options"/>
+
+        <addForeignKeyConstraint baseColumnNames="group_id"
+                                 baseTableName="test_tracker"
+                                 constraintName="fk_test_tracker_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="severity_id"
+                                 baseTableName="test_tracker"
+                                 constraintName="fk_test_tracker_severity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="severity"/>
+
+    </changeSet>
+</databaseChangeLog>

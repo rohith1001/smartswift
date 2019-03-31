@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Development_tracker.
+    -->
+    <changeSet id="20181105060846-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="group_id"
+                                 baseTableName="development_tracker"
+                                 constraintName="fk_development_tracker_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="priority_id"
+                                 baseTableName="development_tracker"
+                                 constraintName="fk_development_tracker_priority_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="devpriority"/>
+
+        <addForeignKeyConstraint baseColumnNames="service_type_id"
+                                 baseTableName="development_tracker"
+                                 constraintName="fk_development_tracker_service_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="devservice"/>
+
+    </changeSet>
+</databaseChangeLog>

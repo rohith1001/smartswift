@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pcincident-heading">Create or edit a Pcincident</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pcincident.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pcincident.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                        [(ngModel)]="pcincident.reference" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="pcincident.title" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_system">System</label>
+                    <input type="text" class="form-control" name="system" id="field_system"
+                        [(ngModel)]="pcincident.system" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date_recieved">Date Recieved</label>
+                    <div class="input-group">
+                        <input id="field_date_recieved" type="text" class="form-control" name="date_recieved" ngbDatepicker  #date_recievedDp="ngbDatepicker" [(ngModel)]="pcincident.date_recieved"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="date_recievedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_priority">Priority</label>
+                    <input type="text" class="form-control" name="priority" id="field_priority"
+                        [(ngModel)]="pcincident.priority" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_request_id">Request Id</label>
+                    <input type="text" class="form-control" name="request_id" id="field_request_id"
+                        [(ngModel)]="pcincident.request_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_release_date">Release Date</label>
+                    <div class="input-group">
+                        <input id="field_release_date" type="text" class="form-control" name="release_date" ngbDatepicker  #release_dateDp="ngbDatepicker" [(ngModel)]="pcincident.release_date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="release_dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_del_six_month">Del Six Month</label>
+                    <input type="text" class="form-control" name="del_six_month" id="field_del_six_month"
+                        [(ngModel)]="pcincident.del_six_month" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user_id">User Id</label>
+                    <input type="number" class="form-control" name="user_id" id="field_user_id"
+                        [(ngModel)]="pcincident.user_id" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

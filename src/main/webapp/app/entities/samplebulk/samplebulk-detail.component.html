@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="samplebulk">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Sample Bulk</span> {{samplebulk.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-12">
+                        <dt class="dtc"><span>Filename</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="samplebulk.filename">
+                                <a (click)="openFile(samplebulk.filenameContentType, samplebulk.filename)">open</a>
+                                {{samplebulk.filenameContentType}}, {{byteSize(samplebulk.filename)}}
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+
+                        <button type="button" [routerLink]="['/samplebulk', samplebulk.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

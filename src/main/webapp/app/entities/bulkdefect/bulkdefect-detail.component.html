@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="bulkdefect">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Files uploaded for PC Defect</span> {{bulkdefect.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt><span>File Name</span></dt>
+                        <dd>
+                            <div *ngIf="bulkdefect.filename">
+                                <a (click)="openFile(bulkdefect.filenameContentType, bulkdefect.filename)">open</a>
+                                {{bulkdefect.filenameContentType}}, {{byteSize(bulkdefect.filename)}}
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/bulkdefect', bulkdefect.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

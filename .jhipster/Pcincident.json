@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "system",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_recieved",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "request_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "release_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "del_six_month",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user_id",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20181113060639",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "pcincident",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

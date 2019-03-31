@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Issuetypes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-issuetype" [routerLink]="['/issuetype/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Issuetype
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="issuetypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Issue Name</span></th>
+            <th><span>Ticket</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let issuetype of issuetypes ;trackBy: trackId">
+                <td><a [routerLink]="['/issuetype', issuetype.id, 'view' ]">{{issuetype.id}}</a></td>
+                <td>{{issuetype.issue_name}}</td>
+                <td>
+                    <div *ngIf="issuetype.ticket">
+                        <a [routerLink]="['../ticket', issuetype.ticket?.id, 'view' ]" >{{issuetype.ticket?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/issuetype', issuetype.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/issuetype', issuetype.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'issuetype/'+ issuetype.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

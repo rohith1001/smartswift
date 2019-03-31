@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="domain">
+            <h2><span>Domain</span> {{domain.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Domain Name</span></dt>
+                <dd>
+                    <span>{{domain.domain_name}}</span>
+                </dd>
+                <dt><span>Ticket</span></dt>
+                <dd>
+                    <div *ngIf="domain.ticket">
+                        <a [routerLink]="['/ticket', domain.ticket?.id, 'view']">{{domain.ticket?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/domain', domain.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

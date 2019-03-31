@@ -1,0 +1,157 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "assingned_in_qc",
+            "otherEntityName": "options",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "code_fix",
+            "otherEntityName": "options",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "concession_defect",
+            "otherEntityName": "options",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "group",
+            "otherEntityName": "group",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "severity",
+            "otherEntityName": "severity",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defect_number",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defect_severity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "domain_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "project_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "test_phase",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "detected_on_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "first_fix_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "last_fix_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fix_due_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resolution",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "closing_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "problem_category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "user_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "km1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm3_breached",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181105101533",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "test_tracker",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

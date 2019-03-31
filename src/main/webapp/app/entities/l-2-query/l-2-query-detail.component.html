@@ -1,0 +1,330 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="l2query">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>L2 Query</span> {{l2query.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Number</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.stk_number}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Description</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.stk_description}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.stk_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Requested Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.requested_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Responded Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.responded_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Comment</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.stk_comment}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Completed</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.rca_completed}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Completed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.rca_completed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Nttdata Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.nttdata_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Solution Found</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.solution_found}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Solution Found Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.solution_found_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Closed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.closed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Root Cause Description</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.root_cause_description}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ter Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.ter_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rrt Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.rrt_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rrt Completion Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.rrt_completion_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Live Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.live_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Fix Success</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.rca_fix_success}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ops Sla Breached</span></dt>
+                        <dd class="ddc">
+                            <span>{{l2query.ops_sla_breached}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ticket</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.ticket">
+                                <a [routerLink]="['/ticket', l2query.ticket?.id, 'view']">{{l2query.ticket?.ticket_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>State</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.state">
+                                <a [routerLink]="['/state', l2query.state?.id, 'view']">{{l2query.state?.state_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Domain</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.domain">
+                                <a [routerLink]="['/domain', l2query.domain?.id, 'view']">{{l2query.domain?.domain_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Category</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.category">
+                                <a [routerLink]="['/category', l2query.category?.id, 'view']">{{l2query.category?.category_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Impact</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.impact">
+                                <a [routerLink]="['/impact', l2query.impact?.id, 'view']">{{l2query.impact?.impact_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Priority</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.priority">
+                                <a [routerLink]="['/priority', l2query.priority?.id, 'view']">{{l2query.priority?.priority_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.group">
+                                <a [routerLink]="['/group', l2query.group?.id, 'view']">{{l2query.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Issuetype</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.issuetype">
+                                <a [routerLink]="['/issuetype', l2query.issuetype?.id, 'view']">{{l2query.issuetype?.issue_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incidenttype</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="l2query.incidenttype">
+                                <a [routerLink]="['/incidenttype', l2query.incidenttype?.id, 'view']">{{l2query.incidenttype?.incident_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.re_assigned_date | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date1 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.re_assigned_date1 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date2 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.re_assigned_date2 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date3 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.re_assigned_date3 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date4 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.re_assigned_date4 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 5</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{l2query.passed_back_date5 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 5</span></dt>
+                                    <dd class="ddc">
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/l-2-query', l2query.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

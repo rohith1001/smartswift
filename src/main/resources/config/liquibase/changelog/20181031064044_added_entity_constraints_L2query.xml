@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity L2query.
+    -->
+    <changeSet id="20181031064044-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ticket_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_ticket_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ticket"/>
+
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="domain_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_domain_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="domain"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+
+        <addForeignKeyConstraint baseColumnNames="impact_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_impact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="impact"/>
+
+        <addForeignKeyConstraint baseColumnNames="priority_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_priority_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="priority"/>
+
+        <addForeignKeyConstraint baseColumnNames="group_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="issuetype_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_issuetype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="issuetype"/>
+
+        <addForeignKeyConstraint baseColumnNames="incidenttype_id"
+                                 baseTableName="l2query"
+                                 constraintName="fk_l2query_incidenttype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="incidenttype"/>
+
+    </changeSet>
+</databaseChangeLog>

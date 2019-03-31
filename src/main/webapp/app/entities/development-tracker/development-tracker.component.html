@@ -1,0 +1,235 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 id="page-heading">
+                        <span>Available Development Trackers</span>
+                    </h5>
+                </div>
+                <div class="col-md-6">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-development-tracker"
+                        [routerLink]="['/development-tracker/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create Development Tracker
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="development_trackers">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>ELF Id</span></td>
+                            <td><span>Project Name</span></td>
+                            <td><span>System</span></td>
+                            <td><span>Priority</span></td>
+                            <td><span>Request Date</span></td>
+                            <td><span>Acknowledgement Date</span></td>
+                            <td><span>Actual Cost Ready Date</span></td>
+                            <td><span>Delivery To Test Planned</span></td>
+                            <td><span>Delivery To Test Actual</span></td>
+                            <td><span>Delivery To Production Planned</span></td>
+                            <td><span>Delivery To Production Actual</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let development_tracker of development_trackers ;trackBy: trackId">
+                            <td><a [routerLink]="['/development-tracker', development_tracker.id, 'view' ]">{{development_tracker.id}}</a></td>
+                            <td>{{development_tracker.elf_id}}</td>
+                            <td>{{development_tracker.project_name}}</td>
+                            <td>
+                                <div *ngIf="development_tracker.group">
+                                    <a [routerLink]="['../group', development_tracker.group?.id, 'view' ]">{{development_tracker.group?.group_name}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div *ngIf="development_tracker.priority">
+                                    <a [routerLink]="['../devpriority', development_tracker.priority?.id, 'view' ]">{{development_tracker.priority?.priorty_name}}</a>
+                                </div>
+                            </td>
+                            <td>{{development_tracker.request_date | date:'medium'}}</td>
+                            <td>{{development_tracker.ack_date | date:'medium'}}</td>
+                            <td>{{development_tracker.cost_ready_date_actual | date:'medium'}}</td>
+                            <td>{{development_tracker.delivery_to_test_planned | date:'medium'}}</td>
+                            <td>{{development_tracker.delivery_to_test_actual | date:'medium'}}</td>
+                            <td>{{development_tracker.delivery_to_production_planned | date:'medium'}}</td>
+                            <td>{{development_tracker.delivery_to_production_actual | date:'medium'}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/development-tracker', development_tracker.id, 'view' ]"
+                                        class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/development-tracker', development_tracker.id, 'edit']"
+                                        class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'development-tracker/'+ development_tracker.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div>
+    
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="development_trackers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Elf Id</span></th>
+            <th><span>Project Name</span></th>
+            <th><span>Request Date</span></th>
+            <th><span>Ack Date</span></th>
+            <th><span>Actual Effort Design Development</span></th>
+            <th><span>Actual Effort Development</span></th>
+            <th><span>Estimated Development Cost Iia</span></th>
+            <th><span>Cost Ready Date Actual</span></th>
+            <th><span>Delivery To Test Planned</span></th>
+            <th><span>Delivery To Test Actual</span></th>
+            <th><span>Test Completed</span></th>
+            <th><span>Defect Detected S 1</span></th>
+            <th><span>Defect Detected S 2</span></th>
+            <th><span>Defect Detected S 3</span></th>
+            <th><span>Defect Detected S 4</span></th>
+            <th><span>Defect Detected S 5</span></th>
+            <th><span>Delivery To Production Planned</span></th>
+            <th><span>Delivery To Production Actual</span></th>
+            <th><span>Implemented Successfully</span></th>
+            <th><span>Incident P 1</span></th>
+            <th><span>Incident P 2</span></th>
+            <th><span>Incident P 3</span></th>
+            <th><span>Incident P 4</span></th>
+            <th><span>Incident P 5</span></th>
+            <th><span>Incident P 6</span></th>
+            <th><span>Defect Date Raised</span></th>
+            <th><span>Critical Incident S 3 Open</span></th>
+            <th><span>Hold Status</span></th>
+            <th><span>Comments</span></th>
+            <th><span>Modified Time</span></th>
+            <th><span>Sow Submission Date</span></th>
+            <th><span>Kpi 1</span></th>
+            <th><span>Kpi 1 Breached</span></th>
+            <th><span>Kpi 2</span></th>
+            <th><span>Kpi 2 Breached</span></th>
+            <th><span>Km 1</span></th>
+            <th><span>Km 1 Breached</span></th>
+            <th><span>Qm 1</span></th>
+            <th><span>Qm 1 Breached</span></th>
+            <th><span>Qm 2</span></th>
+            <th><span>Qm 2 Breached</span></th>
+            <th><span>Finaldate</span></th>
+            <th><span>Group</span></th>
+            <th><span>Priority</span></th>
+            <th><span>Service Type</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let development_tracker of development_trackers ;trackBy: trackId">
+                <td><a [routerLink]="['/development-tracker', development_tracker.id, 'view' ]">{{development_tracker.id}}</a></td>
+                <td>{{development_tracker.elf_id}}</td>
+                <td>{{development_tracker.project_name}}</td>
+                <td>{{development_tracker.request_date | date:'medium'}}</td>
+                <td>{{development_tracker.ack_date | date:'medium'}}</td>
+                <td>{{development_tracker.actual_effort_design_development}}</td>
+                <td>{{development_tracker.actual_effort_development}}</td>
+                <td>{{development_tracker.estimated_development_cost_iia}}</td>
+                <td>{{development_tracker.cost_ready_date_actual | date:'medium'}}</td>
+                <td>{{development_tracker.delivery_to_test_planned | date:'medium'}}</td>
+                <td>{{development_tracker.delivery_to_test_actual | date:'medium'}}</td>
+                <td>{{development_tracker.test_completed}}</td>
+                <td>{{development_tracker.defect_detected_s1}}</td>
+                <td>{{development_tracker.defect_detected_s2}}</td>
+                <td>{{development_tracker.defect_detected_s3}}</td>
+                <td>{{development_tracker.defect_detected_s4}}</td>
+                <td>{{development_tracker.defect_detected_s5}}</td>
+                <td>{{development_tracker.delivery_to_production_planned | date:'medium'}}</td>
+                <td>{{development_tracker.delivery_to_production_actual | date:'medium'}}</td>
+                <td>{{development_tracker.implemented_successfully}}</td>
+                <td>{{development_tracker.incident_p1}}</td>
+                <td>{{development_tracker.incident_p2}}</td>
+                <td>{{development_tracker.incident_p3}}</td>
+                <td>{{development_tracker.incident_p4}}</td>
+                <td>{{development_tracker.incident_p5}}</td>
+                <td>{{development_tracker.incident_p6}}</td>
+                <td>{{development_tracker.defect_date_raised | date:'medium'}}</td>
+                <td>{{development_tracker.critical_incident_s3_open}}</td>
+                <td>{{development_tracker.hold_status}}</td>
+                <td>{{development_tracker.comments}}</td>
+                <td>{{development_tracker.modified_time | date:'medium'}}</td>
+                <td>{{development_tracker.sow_submission_date | date:'medium'}}</td>
+                <td>{{development_tracker.kpi1}}</td>
+                <td>{{development_tracker.kpi1_breached}}</td>
+                <td>{{development_tracker.kpi2}}</td>
+                <td>{{development_tracker.kpi2_breached}}</td>
+                <td>{{development_tracker.km1}}</td>
+                <td>{{development_tracker.km1_breached}}</td>
+                <td>{{development_tracker.qm1}}</td>
+                <td>{{development_tracker.qm1_breached}}</td>
+                <td>{{development_tracker.qm2}}</td>
+                <td>{{development_tracker.qm2_breached}}</td>
+                <td>{{development_tracker.finaldate | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="development_tracker.group">
+                        <a [routerLink]="['../group', development_tracker.group?.id, 'view' ]" >{{development_tracker.group?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="development_tracker.priority">
+                        <a [routerLink]="['../devpriority', development_tracker.priority?.id, 'view' ]" >{{development_tracker.priority?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="development_tracker.service_type">
+                        <a [routerLink]="['../devservice', development_tracker.service_type?.id, 'view' ]" >{{development_tracker.service_type?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/development-tracker', development_tracker.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/development-tracker', development_tracker.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'development-tracker/'+ development_tracker.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->

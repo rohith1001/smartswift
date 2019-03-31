@@ -1,0 +1,437 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="stk">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Stk</span> {{stk.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Number</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.stk_number}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Description</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.stk_description}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Comment</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.stk_comment}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Root Cause Description</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.root_cause_description}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Fix Success</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.rca_fix_success}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Stk Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.stk_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Requested Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.requested_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Responded Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.responded_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Nttdata Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.nttdata_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Completed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.rca_completed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Solution Found Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.solution_found_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Closed Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.closed_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ter Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.ter_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rrt Start Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.rrt_start_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rrt Completion Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.rrt_completion_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Live Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.live_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Rca Completed</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.rca_completed}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Solution Found</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.solution_found}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Finaldate Rca</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.finaldate_rca | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Finaldate Solution</span></dt>
+                        <dd class="ddc">
+                            <span>{{stk.finaldate_solution | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ticket</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.ticket">
+                                <a [routerLink]="['/ticket', stk.ticket?.id, 'view']">{{stk.ticket?.ticket_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>State</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.state">
+                                <a [routerLink]="['/state', stk.state?.id, 'view']">{{stk.state?.state_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Domain</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.domain">
+                                <a [routerLink]="['/domain', stk.domain?.id, 'view']">{{stk.domain?.domain_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Category</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.category">
+                                <a [routerLink]="['/category', stk.category?.id, 'view']">{{stk.category?.category_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Priority</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.priority">
+                                <a [routerLink]="['/priority', stk.priority?.id, 'view']">{{stk.priority?.priority_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.group">
+                                <a [routerLink]="['/group', stk.group?.id, 'view']">{{stk.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Issuetype</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.issuetype">
+                                <a [routerLink]="['/issuetype', stk.issuetype?.id, 'view']">{{stk.issuetype?.issue_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incidenttype</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.incidenttype">
+                                <a [routerLink]="['/incidenttype', stk.incidenttype?.id, 'view']">{{stk.incidenttype?.service_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Impact</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="stk.impact">
+                                <a [routerLink]="['/impact', stk.impact?.id, 'view']">{{stk.impact?.impact_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date1 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date1 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date2 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date2 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date3 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date3 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date4 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date4 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Passed Back Date 5</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.passed_back_date5 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Re Assigned Date 5</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.re_assigned_date5 | date:'medium'}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km3}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 3 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.km3_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 3</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm3}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 3 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm3_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 4</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm4}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 4 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{stk.qm4_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+
+                        <button type="button" [routerLink]="['/stk', stk.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

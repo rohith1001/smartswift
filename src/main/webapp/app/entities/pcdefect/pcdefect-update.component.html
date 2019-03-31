@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pcdefect-heading">Create or edit a Pcdefect</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pcdefect.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pcdefect.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_defect_id">Defect Id</label>
+                    <input type="number" class="form-control" name="defect_id" id="field_defect_id"
+                        [(ngModel)]="pcdefect.defect_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="pcdefect.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_system_impacted">System Impacted</label>
+                    <input type="text" class="form-control" name="system_impacted" id="field_system_impacted"
+                        [(ngModel)]="pcdefect.system_impacted" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date_raised">Date Raised</label>
+                    <div class="input-group">
+                        <input id="field_date_raised" type="text" class="form-control" name="date_raised" ngbDatepicker  #date_raisedDp="ngbDatepicker" [(ngModel)]="pcdefect.date_raised"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="date_raisedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_severity">Severity</label>
+                    <input type="text" class="form-control" name="severity" id="field_severity"
+                        [(ngModel)]="pcdefect.severity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date_closed">Date Closed</label>
+                    <div class="input-group">
+                        <input id="field_date_closed" type="text" class="form-control" name="date_closed" ngbDatepicker  #date_closedDp="ngbDatepicker" [(ngModel)]="pcdefect.date_closed"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="date_closedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_request_id">Request Id</label>
+                    <input type="text" class="form-control" name="request_id" id="field_request_id"
+                        [(ngModel)]="pcdefect.request_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_release_date">Release Date</label>
+                    <div class="input-group">
+                        <input id="field_release_date" type="text" class="form-control" name="release_date" ngbDatepicker  #release_dateDp="ngbDatepicker" [(ngModel)]="pcdefect.release_date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="release_dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                        [(ngModel)]="pcdefect.comments" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_root_cause">Root Cause</label>
+                    <input type="text" class="form-control" name="root_cause" id="field_root_cause"
+                        [(ngModel)]="pcdefect.root_cause" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user_id">User Id</label>
+                    <input type="number" class="form-control" name="user_id" id="field_user_id"
+                        [(ngModel)]="pcdefect.user_id" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_testedbyamdocs">Testedbyamdocs</label>
+                    <input type="text" class="form-control" name="testedbyamdocs" id="field_testedbyamdocs"
+                        [(ngModel)]="pcdefect.testedbyamdocs" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

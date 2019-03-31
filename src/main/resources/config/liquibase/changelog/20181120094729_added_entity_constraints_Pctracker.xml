@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Pctracker.
+    -->
+    <changeSet id="20181120094729-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="configtype_id"
+                                 baseTableName="pctracker"
+                                 constraintName="fk_pctracker_configtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="configtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="elf_status_id"
+                                 baseTableName="pctracker"
+                                 constraintName="fk_pctracker_elf_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="elf_status"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="bulkrelease">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Bulk Release</span> {{bulkrelease.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>File Name</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="bulkrelease.filename">
+                                <a (click)="openFile(bulkrelease.filenameContentType, bulkrelease.filename)">open</a>
+                                {{bulkrelease.filenameContentType}}, {{byteSize(bulkrelease.filename)}}
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/bulkrelease', bulkrelease.id, 'edit']" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

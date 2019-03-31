@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "reference_number",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sla_description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expected",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "minimum",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sla_complaince",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181221051647",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "dashboard",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

@@ -1,0 +1,201 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "group",
+            "otherEntityName": "group",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "priority",
+            "otherEntityName": "devpriority",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "service_type",
+            "otherEntityName": "devservice",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "project_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "request_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "ack_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "actual_effort_design_development",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "actual_effort_development",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "estimated_development_cost_iia",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cost_ready_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_to_test_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_to_test_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "test_completed",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defect_detected_s1",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defect_detected_s2",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defect_detected_s3",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defect_detected_s4",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defect_detected_s5",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "delivery_to_production_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_to_production_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "implemented_successfully",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "incident_p1",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "incident_p2",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "incident_p3",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "incident_p4",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "incident_p5",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "incident_p6",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defect_date_raised",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "critical_incident_s3_open",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "hold_status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "sow_submission_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "kpi1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "kpi2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "finaldate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20181105060846",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "development_tracker",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

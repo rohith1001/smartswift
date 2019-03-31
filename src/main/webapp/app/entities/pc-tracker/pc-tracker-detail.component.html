@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pc_tracker">
+            <h2><span>Pc Tracker</span> {{pc_tracker.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Elf Id</span></dt>
+                <dd>
+                    <span>{{pc_tracker.elf_id}}</span>
+                </dd>
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{pc_tracker.title}}</span>
+                </dd>
+                <dt><span>System</span></dt>
+                <dd>
+                    <span>{{pc_tracker.system}}</span>
+                </dd>
+                <dt><span>Date Received</span></dt>
+                <dd>
+                    <span>{{pc_tracker.date_received}}</span>
+                </dd>
+                <dt><span>Iia Delivery Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.iia_delivery_date_planned}}</span>
+                </dd>
+                <dt><span>Iia Delivery Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.iia_delivery_date_actual}}</span>
+                </dd>
+                <dt><span>Dcd Delivery Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.dcd_delivery_date_planned}}</span>
+                </dd>
+                <dt><span>Dcd Delivery Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.dcd_delivery_date_actual}}</span>
+                </dd>
+                <dt><span>Wr Acknowledge Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.wr_acknowledge_date_planned}}</span>
+                </dd>
+                <dt><span>Wr Acknowledge Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.wr_acknowledge_date_actual}}</span>
+                </dd>
+                <dt><span>Wr Costready Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.wr_costready_date_planned}}</span>
+                </dd>
+                <dt><span>Wr Costready Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.wr_costready_date_actual}}</span>
+                </dd>
+                <dt><span>Hlcd Delivery Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.hlcd_delivery_date_planned}}</span>
+                </dd>
+                <dt><span>Hlcd Delivery Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.hlcd_delivery_date_actual}}</span>
+                </dd>
+                <dt><span>Test Ready Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.test_ready_date_planned}}</span>
+                </dd>
+                <dt><span>Test Ready Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.test_ready_date_actual}}</span>
+                </dd>
+                <dt><span>Launch Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.launch_date_planned}}</span>
+                </dd>
+                <dt><span>Launch Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.launch_date_actual}}</span>
+                </dd>
+                <dt><span>Delivery Date Planned</span></dt>
+                <dd>
+                    <span>{{pc_tracker.delivery_date_planned}}</span>
+                </dd>
+                <dt><span>Delivery Date Actual</span></dt>
+                <dd>
+                    <span>{{pc_tracker.delivery_date_actual}}</span>
+                </dd>
+                <dt><span>Comments</span></dt>
+                <dd>
+                    <span>{{pc_tracker.comments}}</span>
+                </dd>
+                <dt><span>Modified Time</span></dt>
+                <dd>
+                    <span>{{pc_tracker.modified_time}}</span>
+                </dd>
+                <dt><span>Major</span></dt>
+                <dd>
+                    <span>{{pc_tracker.major}}</span>
+                </dd>
+                <dt><span>Minor</span></dt>
+                <dd>
+                    <span>{{pc_tracker.minor}}</span>
+                </dd>
+                <dt><span>Cosmetic</span></dt>
+                <dd>
+                    <span>{{pc_tracker.cosmetic}}</span>
+                </dd>
+                <dt><span>Elf Status</span></dt>
+                <dd>
+                    <div *ngIf="pc_tracker.elf_status">
+                        <a [routerLink]="['/elf-status', pc_tracker.elf_status?.id, 'view']">{{pc_tracker.elf_status?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Configtype</span></dt>
+                <dd>
+                    <div *ngIf="pc_tracker.configtype">
+                        <a [routerLink]="['/configtype', pc_tracker.configtype?.id, 'view']">{{pc_tracker.configtype?.n}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pc-tracker', pc_tracker.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

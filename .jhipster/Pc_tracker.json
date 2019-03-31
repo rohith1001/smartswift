@@ -1,0 +1,127 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "elf_status",
+            "otherEntityName": "elf_status",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "configtype",
+            "otherEntityName": "configtype",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "n"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "system",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_received",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dcd_delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dcd_delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_acknowledge_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_acknowledge_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_costready_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_costready_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hlcd_delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hlcd_delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "test_ready_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "test_ready_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "launch_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "launch_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "major",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "minor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cosmetic",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20181109061749",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "pc_tracker",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

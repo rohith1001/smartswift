@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-dashboard-heading">
+                            <span *ngIf="dashboard.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> Dashboard
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_reference_number">Reference Number</label>
+                            <input type="text" class="form-control" name="reference_number" id="field_reference_number"
+                                [(ngModel)]="dashboard.reference_number" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_sla_description">SLA Description</label>
+                            <input type="text" class="form-control" name="sla_description" id="field_sla_description"
+                                [(ngModel)]="dashboard.sla_description" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_expected">Expected</label>
+                            <input type="text" class="form-control" name="expected" id="field_expected" [(ngModel)]="dashboard.expected" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_minimum">Minimum</label>
+                            <input type="text" class="form-control" name="minimum" id="field_minimum" [(ngModel)]="dashboard.minimum" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_sla_complaince">SLA Complaince</label>
+                            <input type="text" class="form-control" name="sla_complaince" id="field_sla_complaince"
+                                [(ngModel)]="dashboard.sla_complaince" />
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="dashboard.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--<div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!dashboard.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="dashboard.id" readonly />
+                </div>
+            </div>-->
+        </form>
+    </div>
+</div>

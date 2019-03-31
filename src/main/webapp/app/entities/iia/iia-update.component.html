@@ -1,0 +1,272 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-iia-heading">
+                            <span *ngIf="iia.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> IIA
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_elf_id">ELF Id</label>
+                            <input type="text" class="form-control form-control-custom" name="elf_id" id="field_elf_id"
+                                [(ngModel)]="iia.elf_id" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_project_name">Project Name</label>
+                            <input type="text" class="form-control form-control-custom" name="project_name" id="field_project_name"
+                                [(ngModel)]="iia.project_name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">System</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="iia.group"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === iia.group?.id ? iia.group : groupOption" *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_request_date">Request Date</label>
+                            <div class="d-flex">
+                                <input id="field_request_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="request_date" [(ngModel)]="request_date" required [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_actual_acknowledgement_date">Actual
+                                Acknowledgement
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_actual_acknowledgement_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="actual_acknowledgement_date" [(ngModel)]="actual_acknowledgement_date" [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_date_planned">Delivery
+                                Date Planned</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_date_planned" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_date_planned" [(ngModel)]="delivery_date_planned" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_date_actual">Delivery
+                                Date Actual</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_date_actual" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_date_actual" [(ngModel)]="delivery_date_actual" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_requestor">Requestor</label>
+                            <input type="text" class="form-control form-control-custom" name="requestor" id="field_requestor"
+                                [(ngModel)]="iia.requestor" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!iia.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_agreed_date">Agreed Date</label>
+                            <div class="d-flex">
+                                <input id="field_agreed_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="agreed_date" [(ngModel)]="agreed_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_date">Hold Date</label>
+                            <div class="d-flex">
+                                <input id="field_hold_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="hold_date" [(ngModel)]="hold_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_flag">Hold Flag</label>
+                            <input type="text" class="form-control form-control-custom" name="hold_flag" id="field_hold_flag"
+                                [(ngModel)]="iia.hold_flag" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_days">Hold Days</label>
+                            <input type="number" class="form-control form-control-custom" name="hold_days" id="field_hold_days"
+                                [(ngModel)]="iia.hold_days" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!iia.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_iia_resubmitted">IIA Resubmitted</label>
+                            <input type="checkbox" class="form-control form-control-custom" name="iia_resubmitted" id="field_iia_resubmitted"
+                                [(ngModel)]="iia.iia_resubmitted" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_iia_resubmitted_date">IIA
+                                Resubmitted Date</label>
+                            <div class="d-flex">
+                                <input id="field_iia_resubmitted_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="iia_resubmitted_date" [(ngModel)]="iia_resubmitted_date" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_resubmission_request_date">Resubmission
+                                Request Date</label>
+                            <div class="d-flex">
+                                <input id="field_resubmission_request_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="resubmission_request_date" [(ngModel)]="resubmission_request_date" [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_finaldate">Final Date</label>
+                            <div class="d-flex">
+                                <input id="field_finaldate" type="datetime-local" class="form-control form-control-custom"
+                                    name="finaldate" [(ngModel)]="finaldate" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_comments">Comments</label>
+                            <input type="text" class="form-control form-control-custom" name="comments" id="field_comments"
+                                [(ngModel)]="iia.comments" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="iia.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--<div>
+                <div class="form-group form-group-custom" [hidden]="!iia.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control form-control-custom" id="id" name="id" [(ngModel)]="iia.id" readonly />
+                </div>
+
+                
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_hold_flag">Hold Flag</label>
+                    <input type="text" class="form-control form-control-custom" name="hold_flag" id="field_hold_flag" [(ngModel)]="iia.hold_flag" />
+                </div>
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_hold_days">Hold Days</label>
+                    <input type="number" class="form-control form-control-custom" name="hold_days" id="field_hold_days" [(ngModel)]="iia.hold_days" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control form-control-custom" name="modified_time"
+                            [(ngModel)]="modified_time" />
+                    </div>
+                </div>
+
+
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_kpi1">Kpi 1</label>
+                    <input type="text" class="form-control form-control-custom" name="kpi1" id="field_kpi1" [(ngModel)]="iia.kpi1" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_kpi1_breached">Kpi 1 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="kpi1_breached" id="field_kpi1_breached"
+                        [(ngModel)]="iia.kpi1_breached" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm1">Qm 1</label>
+                    <input type="text" class="form-control form-control-custom" name="qm1" id="field_qm1" [(ngModel)]="iia.qm1" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm1_breached">Qm 1 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="qm1_breached" id="field_qm1_breached" [(ngModel)]="iia.qm1_breached" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm2">Qm 2</label>
+                    <input type="text" class="form-control form-control-custom" name="qm2" id="field_qm2" [(ngModel)]="iia.qm2" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm2_breached">Qm 2 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="qm2_breached" id="field_qm2_breached" [(ngModel)]="iia.qm2_breached" />
+                </div>
+                
+                
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_km1">Km 1</label>
+                    <input type="text" class="form-control form-control-custom" name="km1" id="field_km1" [(ngModel)]="iia.km1" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_km1_breached">Km 1 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="km1_breached" id="field_km1_breached" [(ngModel)]="iia.km1_breached" />
+                </div>
+
+
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_resolved">Resolved</label>
+                    <select class="form-control form-control-custom" id="field_resolved" name="resolved" [(ngModel)]="iia.resolved">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="resolvedOption.id === iia.resolved?.id ? iia.resolved : resolvedOption"
+                            *ngFor="let resolvedOption of resolveds; trackBy: trackResolvedById">{{resolvedOption.id}}</option>
+                    </select>
+                </div>
+            </div>-->
+        </form>
+    </div>
+</div>

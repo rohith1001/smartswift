@@ -1,0 +1,345 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div *ngIf="development_tracker">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><span>Development Tracker</span> {{development_tracker.id}}</h5>
+                    </div>
+                </div>
+                <hr>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>ELF ID</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.elf_id}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Project Name</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.project_name}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Request Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.request_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Ack Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.ack_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Actual Effort Design Development</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.actual_effort_design_development}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Actual Effort Development</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.actual_effort_development}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Estimated Development Cost Iia</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.estimated_development_cost_iia}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Cost Ready Date Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.cost_ready_date_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery To Test Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.delivery_to_test_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery To Test Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.delivery_to_test_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Test Completed</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.test_completed}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Detected S1</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_detected_s1}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Detected S2</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_detected_s2}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Detected S3</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_detected_s3}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Detected S4</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_detected_s4}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Detected S5</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_detected_s5}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery To Production Planned</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.delivery_to_production_planned | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Delivery To Production Actual</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.delivery_to_production_actual | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Implemented Successfully</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.implemented_successfully}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P1</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p1}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P2</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p2}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P3</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p3}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P4</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p4}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P5</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p5}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Incident P6</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.incident_p6}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Defect Date Raised</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.defect_date_raised | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Critical Incident S3 Open</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.critical_incident_s3_open}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Hold Status</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.hold_status}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Comments</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.comments}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Modified Time</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.modified_time | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>SOW Submission Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.sow_submission_date | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Final Date</span></dt>
+                        <dd class="ddc">
+                            <span>{{development_tracker.finaldate | date:'medium'}}</span>
+                        </dd>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Group</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="development_tracker.group">
+                                <a [routerLink]="['/group', development_tracker.group?.id, 'view']">{{development_tracker.group?.group_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Priority</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="development_tracker.priority">
+                                <a [routerLink]="['/devpriority', development_tracker.priority?.id, 'view']">{{development_tracker.priority?.priorty_name}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3">
+                        <dt class="dtc"><span>Service Type</span></dt>
+                        <dd class="ddc">
+                            <div *ngIf="development_tracker.service_type">
+                                <a [routerLink]="['/devservice', development_tracker.service_type?.id, 'view']">{{development_tracker.service_type?.service_type}}</a>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 vw-grp">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.kpi1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.kpi1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.kpi2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Kpi 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.kpi2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.km1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Km 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.km1_breached}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.qm1}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 1 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.qm1_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.qm2}}</span>
+                                    </dd>
+                                </div>
+                                <div class="col-md-3">
+                                    <dt class="dtc"><span>Qm 2 Breached</span></dt>
+                                    <dd class="ddc">
+                                        <span>{{development_tracker.qm2_breached}}</span>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" (click)="previousState()" class="btn btn-sm btn-info">
+                            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                        </button>
+                        <button type="button" [routerLink]="['/development-tracker', development_tracker.id, 'edit']"
+                            class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

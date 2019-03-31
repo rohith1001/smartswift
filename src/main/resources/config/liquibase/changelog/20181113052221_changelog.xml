@@ -1,0 +1,143 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="136747 (generated)" id="1542086548537-1">
+        <createTable tableName="stk">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="stkPK"/>
+            </column>
+            <column name="closed_date" type="TINYBLOB"/>
+            <column name="live_date" type="TINYBLOB"/>
+            <column name="modified_time" type="TINYBLOB"/>
+            <column name="nttdata_start_date" type="TINYBLOB"/>
+            <column name="passed_back_date" type="TINYBLOB"/>
+            <column name="passed_back_date_1" type="TINYBLOB"/>
+            <column name="passed_back_date_2" type="TINYBLOB"/>
+            <column name="passed_back_date_3" type="TINYBLOB"/>
+            <column name="passed_back_date_4" type="TINYBLOB"/>
+            <column name="passed_back_date_5" type="TINYBLOB"/>
+            <column name="rca_completed" type="INT"/>
+            <column name="rca_completed_date" type="TINYBLOB"/>
+            <column name="rca_fix_success" type="VARCHAR(255)"/>
+            <column name="re_assigned_date" type="TINYBLOB"/>
+            <column name="re_assigned_date_1" type="TINYBLOB"/>
+            <column name="re_assigned_date_2" type="TINYBLOB"/>
+            <column name="re_assigned_date_3" type="TINYBLOB"/>
+            <column name="re_assigned_date_4" type="TINYBLOB"/>
+            <column name="re_assigned_date_5" type="TINYBLOB"/>
+            <column name="requested_date" type="TINYBLOB"/>
+            <column name="responded_time" type="TINYBLOB"/>
+            <column name="root_cause_description" type="VARCHAR(255)"/>
+            <column name="rrt_completion_date" type="TINYBLOB"/>
+            <column name="rrt_start_date" type="TINYBLOB"/>
+            <column name="solution_found" type="INT"/>
+            <column name="solution_found_date" type="TINYBLOB"/>
+            <column name="stk_comment" type="VARCHAR(255)"/>
+            <column name="stk_description" type="VARCHAR(255)"/>
+            <column name="stk_number" type="VARCHAR(255)"/>
+            <column name="stk_start_date" type="TINYBLOB"/>
+            <column name="ter_date" type="TINYBLOB"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="domain_id" type="BIGINT"/>
+            <column name="group_id" type="BIGINT"/>
+            <column name="impact_id" type="BIGINT"/>
+            <column name="incidenttype_id" type="BIGINT"/>
+            <column name="issuetype_id" type="BIGINT"/>
+            <column name="priority_id" type="BIGINT"/>
+            <column name="state_id" type="BIGINT"/>
+            <column name="ticket_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-2">
+        <addForeignKeyConstraint baseColumnNames="incidenttype_id" baseTableName="stk" constraintName="FK1jiqqg730uip1nhkcqiei4ybb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="incidenttype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-3">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="test_tracker" constraintName="FK1uw1vaj1ow18ghpmg51jv9865" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-4">
+        <addForeignKeyConstraint baseColumnNames="issuetype_id" baseTableName="l2query" constraintName="FK2550h2sudw0u3x30asmpp8h5a" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="issuetype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-5">
+        <addForeignKeyConstraint baseColumnNames="priority_id" baseTableName="l2query" constraintName="FK3fs501glpbvvayqrjscms44qp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="priority"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-6">
+        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="stk" constraintName="FK43yvma77gvpcgbxyo6btyom7x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="state"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-7">
+        <addForeignKeyConstraint baseColumnNames="severity_id" baseTableName="test_tracker" constraintName="FK50dc6m31bw2df9m06rsrb3rbf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="severity"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-8">
+        <addForeignKeyConstraint baseColumnNames="configtype_id" baseTableName="pc_tracker" constraintName="FK7g03uatow3bclynlimn7v9g9y" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="configtype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-9">
+        <addForeignKeyConstraint baseColumnNames="priority_id" baseTableName="stk" constraintName="FK7nrq6r8qoxxo5n56v5fgcblqr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="priority"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-10">
+        <addForeignKeyConstraint baseColumnNames="priority_id" baseTableName="development_tracker" constraintName="FK7ohhx1r35hukyx2onk5a3gpon" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="devpriority"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-11">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="stk" constraintName="FK8nlf68xfunaampxs3ihj4ro3s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-12">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="l2query" constraintName="FK8q7syvyol9fwa6oh2apoxn43a" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-13">
+        <addForeignKeyConstraint baseColumnNames="ticket_id" baseTableName="l2query" constraintName="FK8stng6kfmnw1vdiq49ws4802e" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ticket"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-14">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="stk" constraintName="FKad8kp0potuxcgklgbt5hgbf7c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-15">
+        <addForeignKeyConstraint baseColumnNames="impact_id" baseTableName="stk" constraintName="FKanvuq9k3c3mefformiv1lxfw3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="impact"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-16">
+        <addForeignKeyConstraint baseColumnNames="concession_defect_id" baseTableName="test_tracker" constraintName="FKb8mkjwd8xb0oqlg153qo844tp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="options"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-17">
+        <addForeignKeyConstraint baseColumnNames="issuetype_id" baseTableName="stk" constraintName="FKextpfgjdh9uvbt613mrm86rys" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="issuetype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-18">
+        <addForeignKeyConstraint baseColumnNames="domain_id" baseTableName="l2query" constraintName="FKglpl080mpqhgql8vyadqevr3c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="domain"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-19">
+        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="l2query" constraintName="FKj2dy62j3onqj0m0jy67eya7hx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="state"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-20">
+        <addForeignKeyConstraint baseColumnNames="code_fix_id" baseTableName="test_tracker" constraintName="FKj8wx7c501ekp7ljnpjokxro9m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="options"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-21">
+        <addForeignKeyConstraint baseColumnNames="assingned_in_qc_id" baseTableName="test_tracker" constraintName="FKk2i3lxmoyrw3v4as07nagtx33" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="options"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-22">
+        <addForeignKeyConstraint baseColumnNames="elf_status_id" baseTableName="pc_tracker" constraintName="FKk33whnb2nhkaavbaryoc4fiaw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="elf_status"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-23">
+        <addForeignKeyConstraint baseColumnNames="service_type_id" baseTableName="development_tracker" constraintName="FKlkj9ledvqe2awjr2mqn2cr7l8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="devservice"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-24">
+        <addForeignKeyConstraint baseColumnNames="ticket_id" baseTableName="incidenttype" constraintName="FKlveodi78hfapne910dfkl5jie" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ticket"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-25">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="development_tracker" constraintName="FKlw0601xlaj1llvhq7n0e2hwbf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-26">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="iia" constraintName="FKmcpb9jj13jkonwahdduv5i0lf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-27">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="l2query" constraintName="FKmgmblho7u737dxwmfej1pw0bj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-28">
+        <addForeignKeyConstraint baseColumnNames="ticket_id" baseTableName="stk" constraintName="FKopwxoookri87uqri2swm9khiw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ticket"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-29">
+        <addForeignKeyConstraint baseColumnNames="incidenttype_id" baseTableName="l2query" constraintName="FKotig6gqywf5u7isytd26mhwui" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="incidenttype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-30">
+        <addForeignKeyConstraint baseColumnNames="domain_id" baseTableName="stk" constraintName="FKpagjbi77h95g2wx3q21vu1aek" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="domain"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-31">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="hld" constraintName="FKq5bwalck9e1fdnm0eldxoyxy6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542086548537-32">
+        <addForeignKeyConstraint baseColumnNames="impact_id" baseTableName="l2query" constraintName="FKt0dkemxi997cfeqgh0tjar975" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="impact"/>
+    </changeSet>
+</databaseChangeLog>

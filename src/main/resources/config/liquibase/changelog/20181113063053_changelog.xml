@@ -1,0 +1,77 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="136747 (generated)" id="1542090659187-1">
+        <createTable tableName="stk">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="stkPK"/>
+            </column>
+            <column name="closed_date" type="datetime"/>
+            <column name="live_date" type="datetime"/>
+            <column name="modified_time" type="datetime"/>
+            <column name="nttdata_start_date" type="datetime"/>
+            <column name="passed_back_date" type="datetime"/>
+            <column name="passed_back_date_1" type="datetime"/>
+            <column name="passed_back_date_2" type="datetime"/>
+            <column name="passed_back_date_3" type="datetime"/>
+            <column name="passed_back_date_4" type="datetime"/>
+            <column name="passed_back_date_5" type="datetime"/>
+            <column name="rca_completed" type="INT"/>
+            <column name="rca_completed_date" type="datetime"/>
+            <column name="rca_fix_success" type="VARCHAR(255)"/>
+            <column name="re_assigned_date" type="datetime"/>
+            <column name="re_assigned_date_1" type="datetime"/>
+            <column name="re_assigned_date_2" type="datetime"/>
+            <column name="re_assigned_date_3" type="datetime"/>
+            <column name="re_assigned_date_4" type="datetime"/>
+            <column name="re_assigned_date_5" type="datetime"/>
+            <column name="requested_date" type="datetime"/>
+            <column name="responded_time" type="datetime"/>
+            <column name="root_cause_description" type="VARCHAR(255)"/>
+            <column name="rrt_completion_date" type="datetime"/>
+            <column name="rrt_start_date" type="datetime"/>
+            <column name="solution_found" type="INT"/>
+            <column name="solution_found_date" type="datetime"/>
+            <column name="stk_comment" type="VARCHAR(255)"/>
+            <column name="stk_description" type="VARCHAR(255)"/>
+            <column name="stk_number" type="VARCHAR(255)"/>
+            <column name="stk_start_date" type="datetime"/>
+            <column name="ter_date" type="datetime"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="domain_id" type="BIGINT"/>
+            <column name="group_id" type="BIGINT"/>
+            <column name="impact_id" type="BIGINT"/>
+            <column name="incidenttype_id" type="BIGINT"/>
+            <column name="issuetype_id" type="BIGINT"/>
+            <column name="priority_id" type="BIGINT"/>
+            <column name="state_id" type="BIGINT"/>
+            <column name="ticket_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-2">
+        <addForeignKeyConstraint baseColumnNames="incidenttype_id" baseTableName="stk" constraintName="FK1jiqqg730uip1nhkcqiei4ybb" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="incidenttype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-3">
+        <addForeignKeyConstraint baseColumnNames="state_id" baseTableName="stk" constraintName="FK43yvma77gvpcgbxyo6btyom7x" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="state"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-4">
+        <addForeignKeyConstraint baseColumnNames="priority_id" baseTableName="stk" constraintName="FK7nrq6r8qoxxo5n56v5fgcblqr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="priority"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-5">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="stk" constraintName="FK8nlf68xfunaampxs3ihj4ro3s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_group"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-6">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="stk" constraintName="FKad8kp0potuxcgklgbt5hgbf7c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="category"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-7">
+        <addForeignKeyConstraint baseColumnNames="impact_id" baseTableName="stk" constraintName="FKanvuq9k3c3mefformiv1lxfw3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="impact"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-8">
+        <addForeignKeyConstraint baseColumnNames="issuetype_id" baseTableName="stk" constraintName="FKextpfgjdh9uvbt613mrm86rys" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="issuetype"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-9">
+        <addForeignKeyConstraint baseColumnNames="ticket_id" baseTableName="stk" constraintName="FKopwxoookri87uqri2swm9khiw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ticket"/>
+    </changeSet>
+    <changeSet author="136747 (generated)" id="1542090659187-10">
+        <addForeignKeyConstraint baseColumnNames="domain_id" baseTableName="stk" constraintName="FKpagjbi77h95g2wx3q21vu1aek" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="domain"/>
+    </changeSet>
+</databaseChangeLog>

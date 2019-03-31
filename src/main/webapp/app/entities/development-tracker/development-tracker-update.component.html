@@ -1,0 +1,427 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-development-tracker-heading">
+                            <span *ngIf="development_tracker.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> Development Tracker
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_elf_id">ELF Id</label>
+                            <input type="text" class="form-control form-control-custom" name="elf_id" id="field_elf_id"
+                                [(ngModel)]="development_tracker.elf_id" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_project_name">Project Name</label>
+                            <input type="text" class="form-control form-control-custom" name="project_name" id="field_project_name"
+                                [(ngModel)]="development_tracker.project_name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">System</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="development_tracker.group"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === development_tracker.group?.id ? development_tracker.group : groupOption"
+                                    *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_priority">Priority</label>
+                            <select class="form-control form-control-custom" id="field_priority" name="priority"
+                                [(ngModel)]="development_tracker.priority" required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="devpriorityOption.id === development_tracker.priority?.id ? development_tracker.priority : devpriorityOption"
+                                    *ngFor="let devpriorityOption of devpriorities; trackBy: trackDevpriorityById">{{devpriorityOption.priorty_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_request_date">Request Date</label>
+                            <div class="d-flex">
+                                <input id="field_request_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="request_date" [(ngModel)]="request_date" required [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_ack_date">Actual Acknowledgement
+                                Date</label>
+                            <div class="d-flex">
+                                <input id="field_ack_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="ack_date" [(ngModel)]="ack_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_actual_effort_design_development">Actual
+                                Effort (Design + Development)</label>
+                            <input type="number" class="form-control form-control-custom" name="actual_effort_design_development"
+                                id="field_actual_effort_design_development" [(ngModel)]="development_tracker.actual_effort_design_development" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_actual_effort_development">Actual
+                                Effort
+                                (Development)</label>
+                            <input type="number" class="form-control form-control-custom" name="actual_effort_development"
+                                id="field_actual_effort_development" [(ngModel)]="development_tracker.actual_effort_development" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_estimated_development_cost_iia">Estimated
+                                Cost
+                                of Development During IIA</label>
+                            <input type="text" class="form-control form-control-custom" name="estimated_development_cost_iia"
+                                id="field_estimated_development_cost_iia" [(ngModel)]="development_tracker.estimated_development_cost_iia" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_service_type">Service Type</label>
+                            <select class="form-control form-control-custom" id="field_service_type" name="service_type"
+                                [(ngModel)]="development_tracker.service_type">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="devserviceOption.id === development_tracker.service_type?.id ? development_tracker.service_type : devserviceOption"
+                                    *ngFor="let devserviceOption of devservices; trackBy: trackDevserviceById">{{devserviceOption.service_type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_cost_ready_date_actual">Cost
+                                Ready Date Actual</label>
+                            <div class="d-flex">
+                                <input id="field_cost_ready_date_actual" type="datetime-local" class="form-control form-control-custom"
+                                    name="cost_ready_date_actual" [(ngModel)]="cost_ready_date_actual" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_sow_submission_date">Sow
+                                Submission Date</label>
+                            <div class="d-flex">
+                                <input id="field_sow_submission_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="sow_submission_date" [(ngModel)]="sow_submission_date" required [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_to_test_planned">Delivery
+                                To Test
+                                Planned</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_to_test_planned" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_to_test_planned" [(ngModel)]="delivery_to_test_planned" [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_to_test_actual">Delivery
+                                To Test
+                                Actual</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_to_test_actual" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_to_test_actual" [(ngModel)]="delivery_to_test_actual" [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_test_completed">Testing Completed</label>
+                            <input type="text" class="form-control form-control-custom" name="test_completed" id="field_test_completed"
+                                [(ngModel)]="development_tracker.test_completed" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_detected_s1">Defect
+                                Detected S1</label>
+                            <input type="number" class="form-control form-control-custom" name="defect_detected_s1" id="field_defect_detected_s1"
+                                [(ngModel)]="development_tracker.defect_detected_s1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_detected_s2">Defect
+                                Detected S2</label>
+                            <input type="number" class="form-control form-control-custom" name="defect_detected_s2" id="field_defect_detected_s2"
+                                [(ngModel)]="development_tracker.defect_detected_s2" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_detected_s3">Defect
+                                Detected S3</label>
+                            <input type="number" class="form-control form-control-custom" name="defect_detected_s3" id="field_defect_detected_s3"
+                                [(ngModel)]="development_tracker.defect_detected_s3" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_detected_s4">Defect
+                                Detected S4</label>
+                            <input type="number" class="form-control form-control-custom" name="defect_detected_s4" id="field_defect_detected_s4"
+                                [(ngModel)]="development_tracker.defect_detected_s4" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_defect_detected_s5">Defect
+                                Detected S5</label>
+                            <input type="number" class="form-control form-control-custom" name="defect_detected_s5" id="field_defect_detected_s5"
+                                [(ngModel)]="development_tracker.defect_detected_s5" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_to_production_planned">Delivery
+                                To
+                                Production Planned</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_to_production_planned" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_to_production_planned" [(ngModel)]="delivery_to_production_planned"
+                                    [min]="DF" [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_to_production_actual">Delivery
+                                To
+                                Production Actual</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_to_production_actual" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_to_production_actual" [(ngModel)]="delivery_to_production_actual"
+                                    [min]="DF" [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_implemented_successfully">Implemented
+                                Successfully</label>
+                            <input type="text" class="form-control form-control-custom" name="implemented_successfully"
+                                id="field_implemented_successfully" [(ngModel)]="development_tracker.implemented_successfully" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_critical_incident_s3_open">Critical
+                                defects
+                                (S3) Open at the time of Implementation</label>
+                            <input type="number" class="form-control form-control-custom" name="critical_incident_s3_open"
+                                id="field_critical_incident_s3_open" [(ngModel)]="development_tracker.critical_incident_s3_open" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p1">Incident P1</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p1" id="field_incident_p1"
+                                [(ngModel)]="development_tracker.incident_p1" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p2">Incident P2</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p2" id="field_incident_p2"
+                                [(ngModel)]="development_tracker.incident_p2" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p3">Incident P3</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p3" id="field_incident_p3"
+                                [(ngModel)]="development_tracker.incident_p3" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p4">Incident P4</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p4" id="field_incident_p4"
+                                [(ngModel)]="development_tracker.incident_p4" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p5">Incident P5</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p5" id="field_incident_p5"
+                                [(ngModel)]="development_tracker.incident_p5" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_incident_p6">Incident P6</label>
+                            <input type="number" class="form-control form-control-custom" name="incident_p6" id="field_incident_p6"
+                                [(ngModel)]="development_tracker.incident_p6" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_status">Hold Status</label>
+                            <input type="text" class="form-control form-control-custom" name="hold_status" id="field_hold_status"
+                                [(ngModel)]="development_tracker.hold_status" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_comments">Comments</label>
+                            <input type="text" class="form-control form-control-custom" name="comments" id="field_comments"
+                                [(ngModel)]="development_tracker.comments" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="development_tracker.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--  <div>                
+                <div class="form-group" [hidden]="!development_tracker.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="development_tracker.id" readonly />
+                </div>                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_defect_date_raised">Defect Date Raised</label>
+                    <div class="d-flex">
+                        <input id="field_defect_date_raised" type="datetime-local" class="form-control" name="defect_date_raised" [(ngModel)]="defect_date_raised"
+                        />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hold_status">Hold Status</label>
+                    <input type="text" class="form-control" name="hold_status" id="field_hold_status"
+                        [(ngModel)]="development_tracker.hold_status" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control" name="modified_time" [(ngModel)]="modified_time"
+                        />
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label class="form-control-label" for="field_kpi1">Kpi 1</label>
+                    <input type="text" class="form-control" name="kpi1" id="field_kpi1"
+                        [(ngModel)]="development_tracker.kpi1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_kpi1_breached">Kpi 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="kpi1_breached" id="field_kpi1_breached"
+                        [(ngModel)]="development_tracker.kpi1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_kpi2">Kpi 2</label>
+                    <input type="text" class="form-control" name="kpi2" id="field_kpi2"
+                        [(ngModel)]="development_tracker.kpi2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_kpi2_breached">Kpi 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="kpi2_breached" id="field_kpi2_breached"
+                        [(ngModel)]="development_tracker.kpi2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1">Km 1</label>
+                    <input type="text" class="form-control" name="km1" id="field_km1"
+                        [(ngModel)]="development_tracker.km1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_km1_breached">Km 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="km1_breached" id="field_km1_breached"
+                        [(ngModel)]="development_tracker.km1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1">Qm 1</label>
+                    <input type="text" class="form-control" name="qm1" id="field_qm1"
+                        [(ngModel)]="development_tracker.qm1" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm1_breached">Qm 1 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm1_breached" id="field_qm1_breached"
+                        [(ngModel)]="development_tracker.qm1_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2">Qm 2</label>
+                    <input type="text" class="form-control" name="qm2" id="field_qm2"
+                        [(ngModel)]="development_tracker.qm2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_qm2_breached">Qm 2 Breached</label>
+                    <input type="checkbox" class="form-control" name="qm2_breached" id="field_qm2_breached"
+                        [(ngModel)]="development_tracker.qm2_breached" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_finaldate">Finaldate</label>
+                    <div class="d-flex">
+                        <input id="field_finaldate" type="datetime-local" class="form-control" name="finaldate" [(ngModel)]="finaldate"
+                        />
+                    </div>
+                </div>              
+                
+            </div> -->
+
+        </form>
+    </div>
+</div>

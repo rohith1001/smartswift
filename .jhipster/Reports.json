@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "report",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "generated_on",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20190121103830",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "reports",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

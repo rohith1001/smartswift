@@ -1,0 +1,109 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "group",
+            "otherEntityName": "group",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "project_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "request_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "actual_acknowledgement_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "agreed_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hold_flag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hold_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hold_days",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wif_submission_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "kpi1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "user_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "finaldate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "requestor",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20181102104051",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "hld",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

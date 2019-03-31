@@ -1,0 +1,197 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "ticket",
+            "otherEntityName": "ticket",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "state",
+            "otherEntityName": "state",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "domain",
+            "otherEntityName": "domain",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "category",
+            "otherEntityName": "category",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "impact",
+            "otherEntityName": "impact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "priority",
+            "otherEntityName": "priority",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "group",
+            "otherEntityName": "group",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "issuetype",
+            "otherEntityName": "issuetype",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "incidenttype",
+            "otherEntityName": "incidenttype",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "stk_number",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stk_description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stk_start_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "requested_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "responded_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "stk_comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "rca_completed",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "rca_completed_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "nttdata_start_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "solution_found",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "solution_found_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date1",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date1",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date2",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date2",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date3",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date3",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date4",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date4",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "passed_back_date5",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "re_assigned_date5",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "closed_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "root_cause_description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ter_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "rrt_start_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "rrt_completion_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "live_date",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "rca_fix_success",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "ops_sla_breached",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181031064044",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "l2query",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

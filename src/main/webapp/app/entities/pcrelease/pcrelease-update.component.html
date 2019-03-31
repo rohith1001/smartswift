@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-pcrelease-heading">Create or edit a Pcrelease</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!pcrelease.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="pcrelease.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_system">System</label>
+                    <input type="text" class="form-control" name="system" id="field_system"
+                        [(ngModel)]="pcrelease.system" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_release_date">Release Date</label>
+                    <div class="input-group">
+                        <input id="field_release_date" type="text" class="form-control" name="release_date" ngbDatepicker  #release_dateDp="ngbDatepicker" [(ngModel)]="pcrelease.release_date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="release_dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_testedbyamdocs">Testedbyamdocs</label>
+                    <input type="text" class="form-control" name="testedbyamdocs" id="field_testedbyamdocs"
+                        [(ngModel)]="pcrelease.testedbyamdocs" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_total_effort">Total Effort</label>
+                    <input type="number" class="form-control" name="total_effort" id="field_total_effort"
+                        [(ngModel)]="pcrelease.total_effort" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

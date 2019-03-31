@@ -1,0 +1,242 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 pad">
+                    <h5 id="page-heading">
+                        <span>Available PC Trackers</span>
+                    </h5>
+                </div>
+                <div class="col-md-4 pad">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-custom" placeholder="Enter ELF ID" [(ngModel)]="searchText">
+                        <div class="input-group-append">
+                            <button class="btn btn-sm btn-success" type="button" [disabled]="!spctrackers || !searchText" (click)="filterData('F')">
+                                <span>GO</span>
+                            </button>
+                            <button class="btn btn-sm btn-secondary" type="button" [disabled]="!spctrackers" (click)="filterData('C')">
+                                <span>CLEAR</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pad">
+                    <button id="jh-create-entity" class="btn btn-sm btn-primary float-right jh-create-entity create-pctracker"
+                        [routerLink]="['/pctracker/new']">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>
+                            Create PC Tracker request
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <jhi-alert></jhi-alert>
+            <div class="table-responsive" *ngIf="pctrackers && pctrackers.length > 0; else noData">
+                <table class="table table-striped table-bordered">
+                    <thead class="form-control-label label-custom hd-ft">
+                        <tr>
+                            <td><span>ID</span></td>
+                            <td><span>ELF Id</span></td>
+                            <td><span>Title</span></td>
+                            <td><span>System</span></td>
+                            <td><span>Config Type</span></td>
+                            <td><span>IIA Delivery Date Actual</span></td>
+                            <td><span>DCD Delivery Date Actual</span></td>
+                            <td><span>HLCD Delivery Date Actual</span></td>
+                            <td><span>Test Ready Date Actual</span></td>
+                            <td><span>Delivery Date Actual</span></td>
+                            <td><span>Actions</span></td>
+                        </tr>
+                    </thead>
+                    <tbody class="form-control-custom">
+                        <tr *ngFor="let pctracker of pctrackers ;trackBy: trackId">
+                            <td><a [routerLink]="['/pctracker', pctracker.id, 'view' ]">{{pctracker.id}}</a></td>
+                            <td>{{pctracker.elf_id}}</td>
+                            <td>{{pctracker.title}}</td>
+                            <td>{{pctracker.system}}</td>
+                            <td>
+                                <div *ngIf="pctracker.configtype">
+                                    <a [routerLink]="['../configtype', pctracker.configtype?.id, 'view' ]">{{pctracker.configtype?.type}}</a>
+                                </div>
+                            </td>
+                            <td>{{pctracker.iia_deliver_date_actual | date:'medium'}}</td>
+                            <td>{{pctracker.dcd_deliver_date_actual | date:'medium'}}</td>
+                            <td>{{pctracker.hlcd_delivery_date_actual | date:'medium'}}</td>
+                            <td>{{pctracker.test_ready_date_actual | date:'medium'}}</td>
+                            <td>{{pctracker.delivery_date_actual | date:'medium'}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" [routerLink]="['/pctracker', pctracker.id, 'view' ]" class="btn btn-info btn-sm">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">View</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/pctracker', pctracker.id, 'edit']" class="btn btn-primary btn-sm">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="submit" [routerLink]="['/', { outlets: { popup: 'pctracker/'+ pctracker.id + '/delete'} }]"
+                                        replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ng-template #noData>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>No Data Found !!!</span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<div>
+
+    <!--<br/>
+    <div class="table-responsive" *ngIf="pctrackers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Elf Id</span></th>
+            <th><span>Title</span></th>
+            <th><span>System</span></th>
+            <th><span>Date Received</span></th>
+            <th><span>Iia Deliver Date Planned</span></th>
+            <th><span>Iia Deliver Date Actual</span></th>
+            <th><span>Dcd Deliver Date Planned</span></th>
+            <th><span>Dcd Deliver Date Actual</span></th>
+            <th><span>Wr Acknowledge Date Planned</span></th>
+            <th><span>Wr Acknowledge Date Actual</span></th>
+            <th><span>Wr Costready Date Planned</span></th>
+            <th><span>Wr Costready Date Actual</span></th>
+            <th><span>Hlcd Delivery Date Planned</span></th>
+            <th><span>Hlcd Delivery Date Actual</span></th>
+            <th><span>Test Ready Date Planned</span></th>
+            <th><span>Test Ready Date Actual</span></th>
+            <th><span>Launch Date Planned</span></th>
+            <th><span>Launch Date Actual</span></th>
+            <th><span>Delivery Date Planned</span></th>
+            <th><span>Delivery Date Actual</span></th>
+            <th><span>Comments</span></th>
+            <th><span>Modified Time</span></th>
+            <th><span>User Id</span></th>
+            <th><span>Major</span></th>
+            <th><span>Minor</span></th>
+            <th><span>Cosmetic</span></th>
+            <th><span>Kpi 1</span></th>
+            <th><span>Kpi 1 Breached</span></th>
+            <th><span>Kpi 2</span></th>
+            <th><span>Kpi 2 Breached</span></th>
+            <th><span>Kpi 3</span></th>
+            <th><span>Kpi 3 Breached</span></th>
+            <th><span>Km 1</span></th>
+            <th><span>Km 1 Breached</span></th>
+            <th><span>Km 2</span></th>
+            <th><span>Km 2 Breached</span></th>
+            <th><span>Km 3</span></th>
+            <th><span>Km 3 Breached</span></th>
+            <th><span>Km 4</span></th>
+            <th><span>Km 4 Breached</span></th>
+            <th><span>Qm 1</span></th>
+            <th><span>Qm 1 Breached</span></th>
+            <th><span>Qm 2</span></th>
+            <th><span>Qm 2 Breached</span></th>
+            <th><span>Configtype</span></th>
+            <th><span>Elf Status</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pctracker of pctrackers ;trackBy: trackId">
+                <td><a [routerLink]="['/pctracker', pctracker.id, 'view' ]">{{pctracker.id}}</a></td>
+                <td>{{pctracker.elf_id}}</td>
+                <td>{{pctracker.title}}</td>
+                <td>{{pctracker.system}}</td>
+                <td>{{pctracker.date_received | date:'medium'}}</td>
+                <td>{{pctracker.iia_deliver_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.iia_deliver_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.dcd_deliver_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.dcd_deliver_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.wr_acknowledge_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.wr_acknowledge_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.wr_costready_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.wr_costready_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.hlcd_delivery_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.hlcd_delivery_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.test_ready_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.test_ready_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.launch_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.launch_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.delivery_date_planned | date:'medium'}}</td>
+                <td>{{pctracker.delivery_date_actual | date:'medium'}}</td>
+                <td>{{pctracker.comments}}</td>
+                <td>{{pctracker.modified_time | date:'medium'}}</td>
+                <td>{{pctracker.user_id}}</td>
+                <td>{{pctracker.major}}</td>
+                <td>{{pctracker.minor}}</td>
+                <td>{{pctracker.cosmetic}}</td>
+                <td>{{pctracker.kpi1}}</td>
+                <td>{{pctracker.kpi1_breached}}</td>
+                <td>{{pctracker.kpi2}}</td>
+                <td>{{pctracker.kpi2_breached}}</td>
+                <td>{{pctracker.kpi3}}</td>
+                <td>{{pctracker.kpi3_breached}}</td>
+                <td>{{pctracker.km1}}</td>
+                <td>{{pctracker.km1_breached}}</td>
+                <td>{{pctracker.km2}}</td>
+                <td>{{pctracker.km2_breached}}</td>
+                <td>{{pctracker.km3}}</td>
+                <td>{{pctracker.km3_breached}}</td>
+                <td>{{pctracker.km4}}</td>
+                <td>{{pctracker.km4_breached}}</td>
+                <td>{{pctracker.qm1}}</td>
+                <td>{{pctracker.qm1_breached}}</td>
+                <td>{{pctracker.qm2}}</td>
+                <td>{{pctracker.qm2_breached}}</td>
+                <td>
+                    <div *ngIf="pctracker.configtype">
+                        <a [routerLink]="['../configtype', pctracker.configtype?.id, 'view' ]" >{{pctracker.configtype?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="pctracker.elf_status">
+                        <a [routerLink]="['../elf-status', pctracker.elf_status?.id, 'view' ]" >{{pctracker.elf_status?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/pctracker', pctracker.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/pctracker', pctracker.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'pctracker/'+ pctracker.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>-->
+</div>

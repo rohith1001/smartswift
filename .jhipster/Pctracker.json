@@ -1,0 +1,203 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "configtype",
+            "otherEntityName": "configtype",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "elf_status",
+            "otherEntityName": "elf_status",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "elf_id",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "system",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date_received",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_deliver_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "iia_deliver_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dcd_deliver_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dcd_deliver_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_acknowledge_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_acknowledge_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_costready_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "wr_costready_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hlcd_delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "hlcd_delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "test_ready_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "test_ready_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "launch_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "launch_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_planned",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "delivery_date_actual",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "comments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modified_time",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "user_id",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "major",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "minor",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cosmetic",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "kpi1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "kpi2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "kpi3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kpi3_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km2_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km3_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "km4",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "km4_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm1_breached",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "qm2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qm2_breached",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20181120094729",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "pctracker",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

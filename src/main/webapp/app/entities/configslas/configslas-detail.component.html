@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="configslas">
+            <h2><span>Configslas</span> {{configslas.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Qm 1</span></dt>
+                <dd>
+                    <span>{{configslas.qm1}}</span>
+                </dd>
+                <dt><span>Qm 1 Breached</span></dt>
+                <dd>
+                    <span>{{configslas.qm1_breached}}</span>
+                </dd>
+                <dt><span>Qm 2</span></dt>
+                <dd>
+                    <span>{{configslas.qm2}}</span>
+                </dd>
+                <dt><span>Qm 2 Breached</span></dt>
+                <dd>
+                    <span>{{configslas.qm2_breached}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/configslas', configslas.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

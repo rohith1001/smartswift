@@ -1,0 +1,245 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="jhi-hld-heading">
+                            <span *ngIf="hld.id; then headtemp else headtemp2"></span>
+                            <ng-template #headtemp>Edit</ng-template>
+                            <ng-template #headtemp2>Create</ng-template> HLD
+                        </h5>
+                    </div>
+                </div>
+                <hr class="hr-custom" />
+                <jhi-alert-error></jhi-alert-error>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_elf_id">ELF Id</label>
+                            <input type="text" class="form-control form-control-custom" name="elf_id" id="field_elf_id"
+                                [(ngModel)]="hld.elf_id" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_project_name">Project Name</label>
+                            <input type="text" class="form-control form-control-custom" name="project_name" id="field_project_name"
+                                [(ngModel)]="hld.project_name" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_group">System</label>
+                            <select class="form-control form-control-custom" id="field_group" name="group" [(ngModel)]="hld.group"
+                                required>
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="groupOption.id === hld.group?.id ? hld.group : groupOption" *ngFor="let groupOption of groups; trackBy: trackGroupById">{{groupOption.group_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_request_date">Request Date</label>
+                            <div class="d-flex">
+                                <input id="field_request_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="request_date" [(ngModel)]="request_date" required [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_actual_acknowledgement_date">Actual
+                                Acknowledgement Date</label>
+                            <div class="d-flex">
+                                <input id="field_actual_acknowledgement_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="actual_acknowledgement_date" [(ngModel)]="actual_acknowledgement_date" [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_date_planned">Delivery
+                                Date Planned</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_date_planned" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_date_planned" [(ngModel)]="delivery_date_planned" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_delivery_date_actual">Delivery
+                                Date Actual</label>
+                            <div class="d-flex">
+                                <input id="field_delivery_date_actual" type="datetime-local" class="form-control form-control-custom"
+                                    name="delivery_date_actual" [(ngModel)]="delivery_date_actual" [min]="DF" [max]="DT"
+                                    [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_requestor">Requestor</label>
+                            <input type="text" class="form-control form-control-custom" name="requestor" id="field_requestor"
+                                [(ngModel)]="hld.requestor" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" [hidden]="!hld.id">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_agreed_date">Agreed Date</label>
+                            <div class="d-flex">
+                                <input id="field_agreed_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="agreed_date" [(ngModel)]="agreed_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_date">Hold Date</label>
+                            <div class="d-flex">
+                                <input id="field_hold_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="hold_date" [(ngModel)]="hold_date" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_flag">Hold Flag</label>
+                            <input type="text" class="form-control form-control-custom" name="hold_flag" id="field_hold_flag"
+                                [(ngModel)]="hld.hold_flag" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_hold_days">Hold Days</label>
+                            <input type="number" class="form-control form-control-custom" name="hold_days" id="field_hold_days"
+                                [(ngModel)]="hld.hold_days" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_finaldate">Final Date</label>
+                            <div class="d-flex">
+                                <input id="field_finaldate" type="datetime-local" class="form-control form-control-custom"
+                                    name="finaldate" [(ngModel)]="finaldate" [min]="DF" [max]="DT" [pattern]="DREGEX"
+                                    (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_wif_submission_date">WIF
+                                Submission Date</label>
+                            <div class="d-flex">
+                                <input id="field_wif_submission_date" type="datetime-local" class="form-control form-control-custom"
+                                    name="wif_submission_date" [(ngModel)]="wif_submission_date" required [min]="DF"
+                                    [max]="DT" [pattern]="DREGEX" (keypress)="preventDefault($event)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-custom">
+                            <label class="form-control-label label-custom" for="field_comments">Comments</label>
+                            <input type="text" class="form-control form-control-custom" name="comments" id="field_comments"
+                                [(ngModel)]="hld.comments" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="cancel-save" class="btn btn-sm btn-secondary" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-sm btn-primary">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>
+                                <span *ngIf="hld.id; then btemp else btemp2"></span>
+                                <ng-template #btemp>Save</ng-template>
+                                <ng-template #btemp2>Create</ng-template>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div>
+                <div class="form-group form-group-custom" [hidden]="!hld.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control form-control-custom" id="id" name="id"
+                        [(ngModel)]="hld.id" readonly />
+                </div>
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_hold_flag">Hold Flag</label>
+                    <input type="text" class="form-control form-control-custom" name="hold_flag" id="field_hold_flag"
+                        [(ngModel)]="hld.hold_flag" />
+                </div>
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_hold_days">Hold Days</label>
+                    <input type="number" class="form-control form-control-custom" name="hold_days" id="field_hold_days"
+                        [(ngModel)]="hld.hold_days" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_modified_time">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modified_time" type="datetime-local" class="form-control form-control-custom" name="modified_time" [(ngModel)]="modified_time"
+                        />
+                    </div>
+                </div>
+                
+                
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_kpi1">Kpi 1</label>
+                    <input type="text" class="form-control form-control-custom" name="kpi1" id="field_kpi1"
+                        [(ngModel)]="hld.kpi1" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_kpi1_breached">Kpi 1 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="kpi1_breached" id="field_kpi1_breached"
+                        [(ngModel)]="hld.kpi1_breached" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm1">Qm 1</label>
+                    <input type="text" class="form-control form-control-custom" name="qm1" id="field_qm1"
+                        [(ngModel)]="hld.qm1" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm1_breached">Qm 1 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="qm1_breached" id="field_qm1_breached"
+                        [(ngModel)]="hld.qm1_breached" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_user_id">User Id</label>
+                    <input type="number" class="form-control form-control-custom" name="user_id" id="field_user_id"
+                        [(ngModel)]="hld.user_id" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm2">Qm 2</label>
+                    <input type="text" class="form-control form-control-custom" name="qm2" id="field_qm2"
+                        [(ngModel)]="hld.qm2" />
+                </div>
+                <div class="form-group form-group-custom">
+                    <label class="form-control-label label-custom" for="field_qm2_breached">Qm 2 Breached</label>
+                    <input type="checkbox" class="form-control form-control-custom" name="qm2_breached" id="field_qm2_breached"
+                        [(ngModel)]="hld.qm2_breached" />
+                </div>
+                
+            </div>-->
+        </form>
+    </div>
+</div>
